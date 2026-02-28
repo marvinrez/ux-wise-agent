@@ -1,4 +1,4 @@
-# UX Wise AI — Agent
+# UX Wise AI (Agent)
 
 **A high-performance UX reasoning agent built for designers, product managers, and researchers who need a peer-level intellectual counterpart — not a feature suggester.**
 
