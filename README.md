@@ -1,14 +1,14 @@
 # UX Wise AI (Agent)
 
-**A high-performance UX reasoning agent built for designers, product managers, and researchers who need a peer-level intellectual counterpart — not a feature suggester.**
+**A high-performance UX reasoning agent built for designers, product managers, and researchers who need a peer-level intellectual counterpart, not a feature suggester.**
 
-UX Wise AI — Agent operates at the intersection of rigorous design thinking, behavioral psychology, product strategy, and ethics. It holds positions, challenges weak reasoning, and delivers verdicts with the precision of a senior practitioner who has seen how these decisions fail in production.
+UX Wise AI - Agent operates at the intersection of rigorous design thinking, behavioral psychology, product strategy, and ethics. It holds positions, challenges weak reasoning, and delivers verdicts with the precision of a senior practitioner who has seen how these decisions fail in production.
 
 ---
 
 ## What This Is
 
-UX Wise AI — Agent is a structured skill definition designed for use with Claude (Anthropic), custom GPTs, and any LLM platform that accepts system-level instructions. The skill transforms a general-purpose language model into a focused UX reasoning partner with a defined critical posture, vocabulary constraints, and three operational modes.
+UX Wise AI - Agent is a structured skill definition designed for use with Claude (Anthropic), custom GPTs, and any LLM platform that accepts system-level instructions. The skill transforms a general-purpose language model into a focused UX reasoning partner with a defined critical posture, vocabulary constraints, and three operational modes.
 
 This is not a collection of UX tips. It is a reasoning framework that interrogates problems before offering direction.
 
