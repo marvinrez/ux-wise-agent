@@ -4,26 +4,34 @@
 
 ---
 
-## Method 1: Claude Project Instructions (Recommended)
+## Method 1: Claude Projects — Skill File (Recommended for Claude Code users)
 
-Claude Projects allow you to set persistent instructions that apply to every conversation within a project.
+If you are using Claude Code or a Claude environment that supports the Anthropic skills standard, install `SKILL.md` directly:
 
-**Steps:**
+1. Copy the `ux-wise-agent/` directory into your project's `.claude/skills/` folder
+2. Rename the directory to `ux-wise-agent` if it isn't already
+3. Claude will pick up `SKILL.md` automatically and trigger the skill when relevant UX reasoning tasks are requested
+
+The `SKILL.md` file contains YAML frontmatter with the skill name, description, and compatibility metadata. Do not remove or modify the frontmatter block — it controls how the skill is triggered.
+
+---
+
+## Method 2: Claude Projects — Manual Paste (Recommended for claude.ai users)
 
 1. Open [claude.ai](https://claude.ai) and navigate to Projects
 2. Create a new project named "UX Wise AI — Agent"
 3. Click "Edit project instructions"
-4. Copy the full contents of `prompts/system-prompt.md` and paste them into the instructions field
-5. Save the project
-6. All conversations within this project will operate as UX Wise AI — Agent
+4. Copy the full contents of `prompts/system-prompt.md` — from the line after `## SYSTEM PROMPT — START` to the line before `## SYSTEM PROMPT — END`
+5. Paste into the project instructions field
+6. Save the project
+
+All conversations within this project will operate as UX Wise AI — Agent.
 
 **Advantages:** Persistent across sessions. No need to re-paste the prompt. Conversations are organized within the project context.
 
 ---
 
-## Method 2: Anthropic API — Direct System Prompt
-
-For programmatic access, pass the system prompt as the `system` parameter in the messages API.
+## Method 3: Anthropic API — Direct System Prompt
 
 ```python
 import anthropic
@@ -34,7 +42,7 @@ with open("prompts/system-prompt.md", "r") as f:
 client = anthropic.Anthropic(api_key="your-api-key")
 
 response = client.messages.create(
-    model="claude-opus-4-6",
+    model="claude-sonnet-4-6",
     max_tokens=2048,
     system=system_prompt,
     messages=[
@@ -50,9 +58,9 @@ print(response.content[0].text)
 
 ---
 
-## Method 3: Multi-Turn Conversation via API
+## Method 4: Multi-Turn Conversation via API
 
-For conversations with memory across turns:
+For sessions with memory across turns:
 
 ```python
 import anthropic
@@ -69,21 +77,21 @@ def chat(user_message: str) -> str:
         "role": "user",
         "content": user_message
     })
-    
+
     response = client.messages.create(
-        model="claude-opus-4-6",
+        model="claude-sonnet-4-6",
         max_tokens=2048,
         system=system_prompt,
         messages=conversation_history
     )
-    
+
     assistant_message = response.content[0].text
-    
+
     conversation_history.append({
         "role": "assistant",
         "content": assistant_message
     })
-    
+
     return assistant_message
 
 # Example usage
@@ -93,7 +101,7 @@ print(chat("Now use Provocative Mode to challenge the direction I just described
 
 ---
 
-## Method 4: Streaming Responses
+## Method 5: Streaming Responses
 
 For long analytical responses, streaming improves the user experience in interfaces you build:
 
@@ -106,7 +114,7 @@ with open("prompts/system-prompt.md", "r") as f:
 client = anthropic.Anthropic(api_key="your-api-key")
 
 with client.messages.stream(
-    model="claude-opus-4-6",
+    model="claude-sonnet-4-6",
     max_tokens=2048,
     system=system_prompt,
     messages=[
@@ -122,17 +130,20 @@ with client.messages.stream(
 
 ---
 
-## Recommended Model
+## Model Selection
 
-Use `claude-opus-4-6` for complex strategic and provocative mode responses. This model handles long-form analytical reasoning and maintains the agent's positioning standards across a full response more reliably than smaller models.
+| Model | Best for |
+|---|---|
+| `claude-opus-4-6` | Complex Strategic and Provocative Mode responses requiring extended analytical depth |
+| `claude-sonnet-4-6` | Direct Mode responses, Research Mode protocol generation, shorter interactions |
 
-Use `claude-sonnet-4-6` for direct mode responses and shorter interactions where response time is a priority.
+For most usage, `claude-sonnet-4-6` is sufficient and responds faster. Use `claude-opus-4-6` for high-stakes decisions where the depth of Strategic Mode analysis matters.
 
 ---
 
 ## Mode Activation in Prompts
 
-When building interfaces on top of this skill, you can pre-activate a mode by prefixing the user's message or by including the mode instruction in your request:
+When building interfaces on top of this skill, pre-activate a mode by prefixing the user's message:
 
 ```python
 user_input = "Should I use tabs or a sidebar?"
@@ -141,10 +152,21 @@ mode = "Direct Mode"
 formatted_message = f"Use {mode}. {user_input}"
 ```
 
-This produces cleaner outputs than asking users to specify modes manually.
+This produces more consistent outputs than asking users to specify modes manually.
+
+In v2.0, the agent also infers mode from contextual signals without explicit keywords. Explicit mode specification still takes precedence.
 
 ---
 
 ## Token Considerations
 
-Strategic Mode responses for complex problems typically run between 400 and 900 tokens. Provocative Mode responses run shorter — 300 to 500 tokens. Set `max_tokens` at a minimum of 1500 to avoid truncation on complex strategic analysis. For multi-turn sessions on a single complex topic, monitor context window usage if the conversation exceeds 10 turns.
+| Mode | Typical response length |
+|---|---|
+| Strategic Mode (complex problem) | 500–900 tokens |
+| Strategic Mode (focused question) | 300–500 tokens |
+| Direct Mode | 80–150 tokens |
+| Provocative Mode | 250–450 tokens |
+| Research Mode (protocol design) | 500–800 tokens |
+
+Set `max_tokens` to at least 1500 to avoid truncation on complex Strategic or Research Mode responses. For multi-turn sessions on a single complex topic, monitor context window usage if the conversation exceeds 10 turns.
+
