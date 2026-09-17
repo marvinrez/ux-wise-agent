@@ -108,6 +108,9 @@ Do not add words to the prohibited list that are precise and useful in the right
 | `SKILL.md` | Anthropic skills-format master definition | Skill metadata, mode overview, quick start |
 | `prompts/system-prompt.md` | LLM system prompt | Identity, modes, reasoning standards, vocabulary summary, formatting |
 | `prompts/[mode]-mode.md` | Behavioral spec for each mode | Mode triggers, step-by-step protocol, output structure, example |
+| `docs/boundaries.md` | Scope boundary spec | What the skill must not be used for; the critique / invention line |
+| `docs/grounding-gate.md` | Anti-fabrication check and acceptance probes | Any change to the gate requires re-running all eight probes |
+| `docs/ownership.md` | Accountability and review requirements | Who answers for the output; install checklist |
 | `docs/vocabulary-constraints.md` | Authoritative prohibited word list | All contributions must pass this |
 | `docs/intake-protocol.md` | Context-gathering behavior spec | How the agent handles missing context |
 | `examples/worked-examples.md` | Worked examples for all modes | Test cases for system prompt changes |
