@@ -12,6 +12,8 @@ UX Wise AI is a structured skill definition designed for Claude (Anthropic), cus
 
 This is not a collection of UX tips. It is a reasoning framework that interrogates problems before offering direction.
 
+**What it is not:** a design generator. It cannot see interfaces, does not hold your product data, and does not know what your users did. It reasons about design decisions and stops at the edge of what you gave it. See [When Not to Use This Skill](#when-not-to-use-this-skill).
+
 ---
 
 ## Who It Is Built For
@@ -60,6 +62,55 @@ Study design and methodology reasoning. Establishes what decision the research n
 
 ---
 
+## When Not to Use This Skill
+
+Three facts set the boundary: the skill cannot see interfaces, does not hold your product data, and does not know what your users did.
+
+**Critique is in scope. Invention is not.** They produce identical-looking output and differ only in where the specifics came from. Given "a three-step checkout," the skill reasons about three-step checkouts. It does not comment on your button labels, your field order, or your error states, because it was not told them. The failure this prevents: you ask it to "review this design," give it two sentences, and it invents the screen it was never shown and then critiques its own invention. The critique reads as expert. It is about nothing.
+
+Do not use it to:
+
+| Request | Why it is out of reach |
+|---|---|
+| Invent an interface — wireframes, specs, component structures, mockups, production copy | An invented interface carries invented specifics, and fluent prose makes those indistinguishable from real ones |
+| Critique a design that has not been supplied | No image, no DOM, no Figma file, no recording. It declines rather than reconstructing |
+| Supply facts about your product — conversion rates, drop-off, ticket volumes, quotes, test results | Yours to provide. It can reason about what a number means, not produce one |
+| Produce citations as evidence | A specific study with a specific author and a specific percentage is the exact shape fabrication takes in this domain |
+| Declare accessibility conformance | It reasons about which criteria apply; conformance is established by testing the built artifact, with assistive technology, by a person |
+| Stand in for users | A synthetic usability finding is a hypothesis with the grammar of a result |
+| Settle a decision whose real variable is organizational | It will produce a confident position anyway. Confidence is not jurisdiction |
+
+Borderline cases — "redesign this," "write the empty state copy," "what do users expect here" — are worked through in [`docs/boundaries.md`](docs/boundaries.md).
+
+---
+
+## Grounding Gate
+
+The skill is built to sound certain. That is its function and its main hazard: a hedging agent that invents a detail gets caught, a confident one gets believed.
+
+Before delivering a response, the agent tests every **specific** in its draft — anything a reader could act on that is not a general principle. Each must trace to one of four origins: **supplied** by you, **named** as a public framework or standard, **assumed** and marked as such, or **conditional** ("if X, then Y"). A specific with no origin is fabricated, and one fabricated specific fails the whole response.
+
+| Check | FAIL condition |
+|---|---|
+| Artifact | Names a screen, component, field, label, state, or step you did not supply |
+| Evidence | Contains a number, study, author, date, or benchmark that is neither supplied nor precisely nameable |
+| Behavior | States what *your* users did rather than what users *tend* to do |
+| Standard | Cites a WCAG criterion, heuristic number, or statistical threshold approximately |
+
+On FAIL, the response is repaired and re-run: ask for what is missing, restate at the resolution actually supplied, or convert the invented specific into a stated assumption. On FAIL at the Artifact check with nothing supplied, the response stops — the agent says what it needs instead of producing the critique.
+
+Responses that pass on assumptions or conditionals carry them visibly, on one plain line:
+
+```
+Unverified: [assumption or conditional], [assumption or conditional]
+```
+
+[`docs/grounding-gate.md`](docs/grounding-gate.md) holds the full specification and eight **acceptance probes** — prompts with expected verdicts. Run them in your environment before trusting an installation, and again after any system prompt edit or model change. The eighth probe checks that the gate has not simply become a mute button: a normal question with full context should still get a full answer.
+
+The gate catches fabrication, not error. A response can pass every check and still be wrong about the trade-off.
+
+---
+
 ## Repository Structure
 
 ```
@@ -74,7 +125,7 @@ ux-wise-agent/
 │   ├── provocative-mode.md           ← Provocative Mode prompt layer
 │   └── research-mode.md              ← Research Mode prompt layer (new in v2.0)
 ├── examples/
-│   └── worked-examples.md            ← Six examples across all four modes
+│   └── worked-examples.md            ← Eight examples: four modes, pushback, scope redirect, two gate cases
 ├── knowledge/
 │   ├── ux-principles.md              ← Core UX knowledge base
 │   ├── heuristics.md                 ← Nielsen's heuristics with applied commentary
@@ -83,6 +134,9 @@ ux-wise-agent/
 │   ├── claude-skill.md               ← How to use as a Claude Project or API skill
 │   └── custom-gpt.md                 ← How to deploy in OpenAI custom GPTs
 └── docs/
+    ├── boundaries.md                 ← When not to use it: the critique / invention line (new in v2.1)
+    ├── grounding-gate.md             ← PASS/FAIL check against fabricated UX + acceptance probes (new in v2.1)
+    ├── ownership.md                  ← Named human owner and review requirements (new in v2.1)
     ├── contribution-guide.md         ← How to extend or refine the skill
     ├── vocabulary-constraints.md     ← Authoritative prohibited word list
     ├── intake-protocol.md            ← Context-gathering protocol (new in v2.0)
@@ -93,11 +147,21 @@ ux-wise-agent/
 
 ## Quick Start
 
+**Before you install: name an owner.**
+
+The install takes two minutes. The failure mode does not. This skill produces senior-sounding analysis at volume, some of it will be wrong, and a fraction of the wrong part will be fabricated rather than merely mistaken. Neither the model nor this repository can be held to that — a person has to be.
+
+Before the skill's output informs anything beyond your own desk, name one human owner, in writing, where your team actually looks. Their accountability is small and specific: they ran the acceptance probes, they re-run them after any system prompt edit or model change, output that leaves the team passed under their eye first, and when the agent is wrong in a way that reached someone, they correct it. Not the tool. Them.
+
+Working alone? You are the owner by default, and the probes are how you find out what you are working with. Full checklist and the review table — which outputs can travel unreviewed and which cannot — in [`docs/ownership.md`](docs/ownership.md).
+
 **Using with Claude (claude.ai)**
 
 1. Open a new Project in Claude
 2. Paste the contents of `prompts/system-prompt.md` into the Project instructions
-3. Start with a starter prompt or go straight to your problem
+3. Run the eight acceptance probes in [`docs/grounding-gate.md`](docs/grounding-gate.md) and confirm each behaves as specified
+4. Name the owner where your team will see it
+5. Start with a starter prompt or go straight to your problem
 
 **Using via Anthropic API**
 
@@ -153,6 +217,8 @@ How do I present [insert design decision] to stakeholders who will push back on 
 **Clarity under complexity.** The harder the problem, the more important the structure. This agent does not retreat into abstraction when problems get complicated.
 
 **No performative safety.** The agent does not hedge every recommendation with "it depends." It accounts for context and then commits.
+
+**Certainty only where it is earned.** Committing to a position and inventing a detail are different acts, and fluent prose hides the difference. The Grounding Gate is the line between them: reason hard, stop at the edge of what you were given, and mark what is assumed.
 
 ---
 

@@ -2,7 +2,41 @@
 
 ---
 
-## v2.0.0 — Current Release
+## v2.1.0 — Current Release
+
+**Release date:** 2026
+
+This release closes three gaps that shared a single root: the skill claimed authority without a boundary, a verification step, or a named human.
+
+**New: Scope boundary — `docs/boundaries.md`**
+v2.0 had a scope limit covering what the skill *produces* (no wireframes, specs, or copy). It had nothing covering what the skill *knows*. The new boundary document draws the critique / invention line: the agent may reason one level above what it was given and zero levels below. Given "a three-step checkout," it reasons about three-step checkouts; it does not comment on button labels or error states it was never shown. The document lists what is in scope, what is out, and works through the borderline requests — "redesign this," "write the empty state copy," "is this accessible." The failure it prevents: a fluent, expert-sounding critique of an interface the agent invented because none was supplied.
+
+**Changed: Skill description no longer says "always activate"**
+The v2.0 frontmatter instructed unconditional activation for complex UX decisions. It now names what the skill must not be activated for — inventing interfaces, critiquing designs that have not been supplied, producing metrics or citations, declaring accessibility conformance.
+
+**New: Grounding Gate — `docs/grounding-gate.md`**
+A PASS/FAIL check the agent runs against its own draft, and that a human can run against the skill. Every specific in a response must trace to one of four origins: supplied by the practitioner, named as a public framework or standard, stated as an assumption, or written as a conditional. A specific with no origin is fabricated, and one fabricated specific fails the response. Four checks cover the ways fabrication enters this domain — Artifact (invented screens and elements), Evidence (invented numbers and studies), Behavior (claiming what *their* users did), Standard (approximate criterion numbers, which survive review because nobody checks a number that looks right).
+
+FAIL means repair and re-run, not refuse. The single exception is an Artifact failure with nothing supplied, where the response stops and asks for the design.
+
+**New: Visible `Unverified` line**
+Responses that pass the gate on assumptions or conditionals now list them on one plain line at the end. It exists for auditability — the practitioner and their reviewer can see which load-bearing parts are the agent's construction. It is explicitly not a disclaimer: a claim that should not have been made gets repaired, not labelled.
+
+**New: Acceptance probes**
+Eight prompts with expected verdicts, for verifying that the gate is active in a given installation and after any system prompt edit or model change. Probe 8 is a normal question with full context, checking that the gate has not become a mute button — a skill that refuses everything is not safer, it is useless.
+
+**New: Ownership requirement — `docs/ownership.md`**
+The install is two minutes and the failure mode is not. Before the skill's output informs anything beyond one person's desk, a named human owner is required: one person who ran the probes, re-runs them after changes, reviews output on its way out of the team, and corrects the record when the agent is wrong. The document includes a table of which output classes can travel unreviewed and which cannot, an install checklist, and a minimum bar for API deployments, where no human sits in the loop by construction.
+
+**New: Worked examples 7 and 8**
+Example 7 shows the gate stopping a response — a critique requested with no artifact supplied. Example 8 shows the more common case: a draft that named an invented step, repaired into a conditional, delivered in full with the assumption surfaced. The analysis loses nothing and stops claiming to know what it does not.
+
+**Updated: `prompts/system-prompt.md`, `SKILL.md`, `README.md`, `integrations/claude-skill.md`**
+Boundary and gate embedded in the system prompt. Install paths in all three surfaces now include running the probes and naming the owner.
+
+---
+
+## v2.0.0
 
 **Release date:** 2026
 

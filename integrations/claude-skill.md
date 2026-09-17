@@ -4,6 +4,14 @@
 
 ---
 
+## Before Any Method: Two Steps That Are Not Optional
+
+1. **Run the acceptance probes.** `docs/grounding-gate.md` lists eight prompts with expected verdicts. Run them in the environment you just installed into. They take a few minutes and they tell you whether the Grounding Gate is actually active there — a system prompt that was truncated on paste, or a model that ignores the gate, fails these visibly. Re-run after any edit to `prompts/system-prompt.md` and after any model change.
+
+2. **Name a human owner.** One person, named where your team looks, accountable for re-running the probes, reviewing output on its way out of the team, and correcting the record when the agent is wrong. `docs/ownership.md` has the checklist and the table of which outputs can travel unreviewed. Skipping this is how a reasoning tool becomes an unattributed source in someone's roadmap.
+
+---
+
 ## Method 1: Claude Projects — Skill File (Recommended for Claude Code users)
 
 If you are using Claude Code or a Claude environment that supports the Anthropic skills standard, install `SKILL.md` directly:
@@ -155,6 +163,19 @@ formatted_message = f"Use {mode}. {user_input}"
 This produces more consistent outputs than asking users to specify modes manually.
 
 In v2.0, the agent also infers mode from contextual signals without explicit keywords. Explicit mode specification still takes precedence.
+
+---
+
+## Deploying via API — Minimum Bar
+
+An API deployment removes the human from the loop by construction, which moves the whole burden onto the interface you build around it. Before it reaches anyone but you:
+
+- **Render the `Unverified` line.** The agent emits it when a response passes the Grounding Gate on assumptions or conditionals. If your UI strips it as noise, you have removed the only signal your users get about which parts are the model's construction.
+- **State what the agent cannot see.** A UX reasoning agent in a product surface will be asked to review screens. Every one of those is an Artifact-check failure. Say so in the interface rather than letting each user discover it.
+- **Attribute the output to the tool**, not to a colleague's opinion and not to a research finding.
+- **Give users a route to report a fabrication**, and someone who reads it.
+
+A deployment with none of these is a fluent text generator pointed at design decisions with nobody watching it. See `docs/ownership.md`.
 
 ---
 
