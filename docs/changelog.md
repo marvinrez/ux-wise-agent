@@ -2,7 +2,45 @@
 
 ---
 
-## v2.1.0 — Current Release
+## v2.2.0 (Current Release)
+
+**Release date:** 2026
+
+This release turns four things the skill named but never made operational into rules: how to settle a trade-off, which states to ask about, when a psychological principle applies, and how bad a problem is. Each is written as conditions and questions, and the Grounding Gate governs all four.
+
+**New: Arbitration (`knowledge/arbitration.md`)**
+Strategic Mode required naming trade-offs but gave no rule for settling one when both sides trace to sound principles. The arbiter checks floors first (irrecoverable loss, applicable accessibility criteria, legal requirements, honesty), names what each side protects, classifies the conflict (organizational conflicts are handed back), looks for a design that keeps both, and only then applies a fixed tie-break order: reversibility and cost of error, frequency and proficiency, reach, strength of evidence, cost of reversing later. Every verdict states what would reverse it. Includes a decision record and recurring conflicts written as conditions.
+
+**New: States and edge cases (`knowledge/states-and-edge-cases.md`)**
+A state inventory, transitions, and edge case questions by category: data, time, repeated and concurrent actions, access, environment, lifecycle. The governing rule: a state the practitioner did not supply is a question, never a finding.
+
+**New: Applied psychology (`knowledge/applied-psychology.md`)**
+The principles the system prompt names, each with its mechanism, when it applies, when it does not, the question that tests it, and where it becomes manipulation. Contested or misread claims (choice overload, "seven plus or minus two" for menus, the three-click rule, "users don't scroll", the Zeigarnik effect) are flagged as not settled. Also covers Gestalt grouping (proximity, similarity, common region, Prägnanz, uniform connectedness), applied only to supplied layouts; selective attention and change blindness; the paradox of the active user; flow; and Postel's law. Pareto, Parkinson, and Occam sit in a separate section as product heuristics, not psychology.
+
+**New: Severity (`knowledge/severity.md`)**
+Nielsen's 0 to 4 scale, bound to supplied artifacts. Frequency and persistence are supplied or assumed, ratings are for the people affected rather than the average, a broken floor sets a minimum of 3, and no overall score is given for a product or a screen.
+
+**Changed: system prompt, Strategic Mode, gate**
+The system prompt carries a compact version of all four rules, so a paste-only install gets them. The gate names arbitration factors, severity factors, state contents, and principle scope as specifics that need an origin. Strategic Mode applies the arbiter when both sides are defensible, and its output ends with a "Reverses if" line.
+
+**New: Acceptance probes 9 to 12**
+Arbitration without context, severity without an artifact, a misapplied principle stated with confidence, and edge cases from a single screenshot.
+
+**Fixed: probe 5 verdict**
+Probe 5 expected "FAIL-stop on Check 4", but the specification stops a response only on Check 1 with nothing supplied. It now reads "FAIL on Check 4, repaired".
+
+**Fixed: Miller and Hick in `knowledge/ux-principles.md`**
+The Miller entry treated seven as a cap on visible menus, which contradicts recognition over recall in the same file. Both entries now state their scope.
+
+**Fixed: `SKILL.md` collision and loading**
+The lowercase `skill.md` (v1.0) mapped to the same path as `SKILL.md` on case-insensitive filesystems, and a clone on macOS checked out the v1.0 file, which has no frontmatter. It has been removed. `SKILL.md` now tells Claude Code to read the system prompt before the first response, because the skill file only summarizes it.
+
+**New: Worked example 9**
+An arbitration case where the verdict splits on one fact the practitioner did not supply.
+
+---
+
+## v2.1.0
 
 **Release date:** 2026
 

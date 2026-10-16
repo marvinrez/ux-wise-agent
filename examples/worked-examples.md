@@ -1,4 +1,4 @@
-# Worked Examples — UX Wise AI Agent v2.1
+# Worked Examples — UX Wise AI Agent v2.2
 
 Four modes. Four realistic problems. Each example shows the full response structure.
 
@@ -199,3 +199,33 @@ Unverified: that your four steps precede the moment the user sees product value 
 ---
 
 **What the gate did:** the draft's first version named step two as the likely problem. Check 1 failed — the practitioner never said what step two collects. Repair converted the invented specific into a conditional ("if any step before the value is visible…"), and the assumption doing the load-bearing work was surfaced on the `Unverified` line rather than buried. The analysis lost nothing. It stopped claiming to know something it did not.
+
+---
+
+## Example 9: Arbitration Between Two Sound Principles
+
+**Prompt:**
+"In our admin console, account owners can remove a team member. Design wants a confirmation dialog. Engineering wants a toast with undo, because owners remove people often while setting up their team and the dialog slows them down. Removing someone revokes their access right away and unassigns their open tickets. Which one?"
+
+---
+
+`[Strategic Mode]`
+
+Both positions trace to sound principles, so naming the trade-off will not settle it. The dialog protects an owner from a destructive slip. The undo toast protects owners who do this often from a step they will learn to click through without reading.
+
+Start with the floors. Removing access is recoverable if the person can be re-invited. You also said that removal unassigns their open tickets, and whether that part can be reversed decides most of this. If undo restores the access and the ticket assignments exactly as they were, nothing is lost for good and no floor applies. If undo restores access but the tickets stay unassigned, the action destroys work other people rely on, and hiding that behind a toast breaks the first floor.
+
+There is a design that keeps both sides, provided undo is complete. Remove immediately, say in the toast what changed (the person's name and how many tickets were unassigned), and keep undo available long enough for an owner who notices the mistake on the next screen to reverse it. The frequent user loses no step. The owner who slipped gets everything back.
+
+If undo cannot restore the ticket assignments, the first tie-breaker, reversibility, decides the case in favour of the dialog. Make it a specific one: name the person and the number of open tickets that will be unassigned, so the owner confirms the consequence rather than the click.
+
+- **Choose:** undo, if undo restores access and ticket assignments together; otherwise a confirmation that names the person and the tickets affected
+- **Gives up:** on the undo path, a hard stop before the action; on the dialog path, one step for owners who remove people often
+- **Mitigation:** the toast states what changed; the dialog states the consequence instead of asking "Are you sure?"
+- **Reverses if:** owners use undo often right after removing someone, which would mean slips are common enough to justify a stop before the action
+
+Unverified: that a removed member can be re-invited with the same role and permissions; you have not said what re-inviting restores
+
+---
+
+**What the arbiter did:** it checked the floors first, which turned the question into one about what undo can restore. It found a design that keeps both sides under one condition, and named the tie-breaker that decides the case if the condition fails. The deciding fact, whether ticket assignments come back, was supplied as a consequence but not as a capability, so the verdict splits on it instead of guessing. The one assumption it relied on sits on the `Unverified` line.

@@ -105,9 +105,22 @@ Responses that pass on assumptions or conditionals carry them visibly, on one pl
 Unverified: [assumption or conditional], [assumption or conditional]
 ```
 
-[`docs/grounding-gate.md`](docs/grounding-gate.md) holds the full specification and eight **acceptance probes** — prompts with expected verdicts. Run them in your environment before trusting an installation, and again after any system prompt edit or model change. The eighth probe checks that the gate has not simply become a mute button: a normal question with full context should still get a full answer.
+[`docs/grounding-gate.md`](docs/grounding-gate.md) holds the full specification and twelve **acceptance probes**: prompts with expected verdicts. Run them in your environment before trusting an installation, and again after any system prompt edit or model change. The eighth probe checks that the gate has not simply become a mute button: a normal question with full context should still get a full answer.
 
 The gate catches fabrication, not error. A response can pass every check and still be wrong about the trade-off.
+
+---
+
+## Reasoning Rules *(new in v2.2)*
+
+Naming a trade-off does not settle it, and a principle cited outside its scope is a fabricated specific with a respectable name. Four references give the agent rules for both, and the Grounding Gate governs every one of them. Each is written as conditions and questions, so applying it never requires a detail you did not supply.
+
+| Reference | What it decides |
+|---|---|
+| [`knowledge/arbitration.md`](knowledge/arbitration.md) | Which of two defensible directions wins: floors that are never traded, a design that keeps both, then a fixed tie-break order, and a verdict that states what would reverse it |
+| [`knowledge/states-and-edge-cases.md`](knowledge/states-and-edge-cases.md) | Which states and edge cases to ask about. A state you did not supply is a question, never a finding |
+| [`knowledge/applied-psychology.md`](knowledge/applied-psychology.md) | When a psychological or Gestalt principle applies, when it does not, where it becomes manipulation, and which popular claims are contested. Pareto, Parkinson, and Occam are kept apart as product heuristics |
+| [`knowledge/severity.md`](knowledge/severity.md) | How bad a problem in a supplied artifact is, on Nielsen's 0 to 4 scale, rated for the people affected |
 
 ---
 
@@ -125,8 +138,12 @@ ux-wise-agent/
 │   ├── provocative-mode.md           ← Provocative Mode prompt layer
 │   └── research-mode.md              ← Research Mode prompt layer (new in v2.0)
 ├── examples/
-│   └── worked-examples.md            ← Eight examples: four modes, pushback, scope redirect, two gate cases
+│   └── worked-examples.md            ← Nine examples: four modes, pushback, scope redirect, two gate cases, one arbitration
 ├── knowledge/
+│   ├── arbitration.md                ← Deciding between two defensible directions (new in v2.2)
+│   ├── states-and-edge-cases.md      ← States and edge cases to ask about, as questions (new in v2.2)
+│   ├── applied-psychology.md         ← Principles with their scope; contested claims flagged (new in v2.2)
+│   ├── severity.md                   ← Severity scale for problems in supplied artifacts (new in v2.2)
 │   ├── ux-principles.md              ← Core UX knowledge base
 │   ├── heuristics.md                 ← Nielsen's heuristics with applied commentary
 │   └── ai-ux-considerations.md       ← AI-specific UX reasoning guide
@@ -159,7 +176,7 @@ Working alone? You are the owner by default, and the probes are how you find out
 
 1. Open a new Project in Claude
 2. Paste the contents of `prompts/system-prompt.md` into the Project instructions
-3. Run the eight acceptance probes in [`docs/grounding-gate.md`](docs/grounding-gate.md) and confirm each behaves as specified
+3. Run the twelve acceptance probes in [`docs/grounding-gate.md`](docs/grounding-gate.md) and confirm each behaves as specified
 4. Name the owner where your team will see it
 5. Start with a starter prompt or go straight to your problem
 
