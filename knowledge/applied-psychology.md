@@ -2,6 +2,8 @@
 
 The system prompt lists the behavioural and cognitive principles this skill reasons from. A list of names does not tell the agent when a principle applies. This document does. For each principle it gives the mechanism, the conditions under which it holds, the conditions under which it does not, the question that tests whether it is in play, and, where relevant, the point at which it turns into manipulation.
 
+It also covers the Gestalt grouping principles that the system prompt names under user-centred design, and, in a separate section near the end, three product heuristics that are often listed beside these principles but are not findings about perception or cognition.
+
 Two rules govern every entry.
 
 1. **A principle is a condition, not a verdict.** "Hick's law says this menu is too long" asserts that the principle applies. Whether it applies depends on how users use the menu, which the agent usually has not been told. Write it as a conditional, or ask.
@@ -32,6 +34,57 @@ Two rules govern every entry.
 - **Mechanism:** users learn to skip regions that look like advertising, including real content placed there. First described by Benway and Lane.
 - **Applies when:** content the user must read sits in a position or style associated with ads: a box at the top or side, a bright promotional treatment.
 - **Question:** does anything the user must read look like something users have learned to ignore?
+
+### Selective attention and change blindness
+
+- **Mechanism:** people attend to what serves their current goal and filter out much of the rest. Simons and Chabris's work on inattentional blindness, and Rensink's on change blindness, show that even large, visible changes can go unnoticed when attention is elsewhere.
+- **Applies when:** something important happens outside the user's focus: a value that updates in place, a message far from the field being edited, a status change in a corner.
+- **Design consequence, as a condition:** if a change happens away from where the user is working, assume it can be missed unless it is signalled where they are looking. Banner blindness is one learned form of this filtering.
+- **Ethical line:** placing fees, terms, or opt-outs where attention will not go is the hidden-costs pattern, not an accident of layout.
+- **Question:** where is the user's attention at this step, and is the thing they must notice there?
+
+---
+
+## Grouping and Visual Organization (Gestalt)
+
+These principles describe how people perceive structure in what they see. The early Gestalt psychologists (Wertheimer, Köhler, Koffka) described proximity, similarity, and Prägnanz. Common region and uniform connectedness were added later by Stephen Palmer, the second with Irvin Rock.
+
+They describe what a viewer perceives in a specific layout, so the Artifact check applies with full force. Use them only on a layout that was supplied: a screenshot, a design file, or a description precise enough to state spacing, boundaries, and styles. Without one, each principle below is a question, not a finding.
+
+### Proximity
+
+- **Mechanism:** items close together are read as belonging together.
+- **Applies when:** spacing has to express structure: a label and its field, a group of related settings, the columns of a table.
+- **Fails when:** spacing contradicts the structure, such as a label sitting the same distance from two fields, or equal gaps between items that belong to different groups.
+- **Question:** does the spacing alone tell the user which items belong together, and does that match what actually belongs together?
+
+### Similarity
+
+- **Mechanism:** items that share a visual property (colour, shape, size, weight) are read as related, or as doing the same job.
+- **Applies when:** a style signals a role: links, buttons, status, selected items.
+- **Fails when:** something non-interactive is styled like a control, or two controls that do the same job look different.
+- **Ethical line:** styling an ad or a paid placement to look like ordinary content is the disguised-ads pattern in Brignull's taxonomy.
+- **Question:** does anything look like a control that is not one, or look different from its peers while doing the same job?
+
+### Common region
+
+- **Mechanism:** items inside a shared boundary (a card, a panel, a shaded background) are read as a group. A boundary can override proximity.
+- **Applies when:** related content has to read as one unit: a card, a table row, a settings section.
+- **Fails when:** boundaries are nested so deeply that they stop meaning anything, or a boundary encloses items that are not related.
+- **Question:** does each boundary mark a real group, and could spacing alone do the same job with less visual weight?
+
+### Prägnanz (simplicity of form)
+
+- **Mechanism:** people read an ambiguous or complex form in its simplest available interpretation.
+- **Applies when:** a shape, icon, or layout can be read more than one way. The simplest reading wins, whether or not it is the intended one.
+- **Question:** what is the simplest reading of this icon or layout, and is it the meaning intended?
+
+### Uniform connectedness
+
+- **Mechanism:** items joined by a line, a connector, or a continuous region are read as more strongly related than items that are only near each other or alike. Palmer and Rock argued that it can outweigh proximity and similarity.
+- **Applies when:** a relationship is sequential or structural: steppers, timelines, flow diagrams, linked fields.
+- **Fails when:** a connector joins items that are not related, or a line implies a sequence the process does not follow.
+- **Question:** do the connections drawn match the relationships that actually exist?
 
 ---
 
@@ -144,6 +197,23 @@ Two rules govern every entry.
 - **Does not apply when:** the question is whether users can finish the task. Remembered experience and task success are measured differently.
 - **Question:** what is the worst moment in this flow, and how does the flow end?
 
+### Paradox of the active user (Carroll and Rosson)
+
+- **Mechanism:** users start acting at once instead of reading instructions, and keep using methods they already know even when the product offers faster ones. Getting the task done now outweighs learning that would pay off later.
+- **Applies when:** a feature depends on users reading, watching, or setting something up before they act: onboarding tours, help pages, advanced features, shortcuts.
+- **Design consequence, as a condition:** if success depends on reading first, expect users to try without reading. Teach at the point of action, and offer the faster method at the moment the slower one is being used.
+- **Does not mean:** that users cannot learn. They learn while doing, not before.
+- **Question:** can a user succeed on the first attempt without reading anything, and where does the product show the faster way?
+
+### Flow (Csikszentmihalyi)
+
+- **Mechanism:** a state of absorbed focus that tends to occur when the challenge matches the person's skill, the goal is clear, and feedback is immediate.
+- **Applies when:** the task is sustained work that people want to sink into: writing, editing, analysis, design tools, games.
+- **Does not apply when:** the task is transactional. For a payment or a form, the aim is to finish and leave, not to stay absorbed.
+- **Design consequence, as a condition:** if the task is sustained, interruptions (modals, unrequested notifications, forced confirmations, blocking saves) cost more than they appear to, because they break the state as well as the moment.
+- **Misuse:** treating time spent as success, or designing loops that keep people engaged past their own goal. Flow serves the user's task. Compulsion serves the metric.
+- **Question:** is this a task users want to sink into or one they want to finish, and what interrupts it?
+
 ---
 
 ## Mental Models and Error
@@ -159,6 +229,13 @@ Two rules govern every entry.
 - **Mechanism:** a slip is the right intention carried out wrongly, such as a mis-tap or the wrong item in a list. A mistake is the wrong intention carried out correctly: the user misunderstood what the option does.
 - **Design consequence, as a condition:** if the errors are slips, the fix is spacing, confirmation, or undo. If they are mistakes, the fix is a clearer model: labels, previews, explanations. A confirmation added for a mistake only helps the user confirm the wrong thing.
 - **Question:** when users get this wrong, did they mean to do something else, or did they mean to do this and misunderstand what it does?
+
+### Postel's law (the robustness principle)
+
+- **Mechanism:** from Jon Postel's specifications for internet protocols: be conservative in what you send and liberal in what you accept. Applied to interfaces: accept the reasonable ways people enter information, and present information back in one consistent form.
+- **Applies when:** users type or paste data with natural variation: phone numbers with spaces or hyphens, dates in several formats, names with accents, email addresses with stray spaces.
+- **Does not apply when:** being liberal creates ambiguity or risk. A date written 03/04 can mean two different days, and silently trimming or altering a password changes the credential. In those cases, ask or constrain rather than guess.
+- **Question:** what are the reasonable ways a user might enter this, and which of them does the product reject?
 
 ### Jakob's law (Nielsen)
 
@@ -183,6 +260,33 @@ Two rules govern every entry.
 - **Mechanism:** when a system is usually right, people check its output less and accept its errors more. Parasuraman and Manzey reviewed the evidence across domains.
 - **Applies when:** an AI or automated feature makes suggestions or decisions that the user is meant to review.
 - **Question:** what does the user have to do to notice that a suggestion is wrong? See `knowledge/ai-ux-considerations.md`.
+
+---
+
+## Product Heuristics, Not Psychology
+
+These three are often listed beside the principles above. They are rules of thumb about effort, scope, and explanation, not findings about perception or cognition. Use them to frame a question. Never cite them as evidence about a product or its users.
+
+### Pareto principle
+
+- **What it says:** a small share of causes often accounts for a large share of effects. Juran generalized it from Pareto's observations of how land and wealth were distributed.
+- **Use it when:** supplied data shows a skew: a few features carry most of the use, or a few issues produce most of the support tickets.
+- **Misuse:** quoting "80/20" as a fact about this product. The split is whatever the data shows, and the Evidence check treats any ratio as a number that must be supplied.
+- **Question:** does your usage or ticket data show a skew, and what is it?
+
+### Parkinson's law
+
+- **What it says:** work expands to fill the time available for it. C. Northcote Parkinson wrote it as an observation about bureaucracy.
+- **Use it when:** scoping work: a research plan, a design sprint, a review cycle with no fixed end.
+- **Misuse in interfaces:** adding time pressure to push users to act. A real time limit must be adjustable for most tasks (WCAG 2.2.1 Timing Adjustable, Level A), and an invented one, such as a fake countdown, is a deceptive pattern.
+- **Question:** is the time limit here real, and can the user extend it?
+
+### Occam's razor
+
+- **What it says:** among explanations that fit the evidence equally well, prefer the one that needs the fewest assumptions.
+- **Use it when:** diagnosing a problem from supplied evidence, or choosing between two designs that meet the same need. It fits the Grounding Gate: the explanation with fewer assumptions puts fewer items on the `Unverified:` line.
+- **Misuse:** treating "simplest" as permission to drop a requirement, or treating the simplest explanation as proven. It is the first hypothesis to test, not the conclusion.
+- **Question:** what is the simplest explanation that fits all the evidence you have, and what observation would rule it out?
 
 ---
 

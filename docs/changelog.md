@@ -15,7 +15,7 @@ Strategic Mode required naming trade-offs but gave no rule for settling one when
 A state inventory, transitions, and edge case questions by category: data, time, repeated and concurrent actions, access, environment, lifecycle. The governing rule: a state the practitioner did not supply is a question, never a finding.
 
 **New: Applied psychology (`knowledge/applied-psychology.md`)**
-The principles the system prompt names, each with its mechanism, when it applies, when it does not, the question that tests it, and where it becomes manipulation. Contested or misread claims (choice overload, "seven plus or minus two" for menus, the three-click rule, "users don't scroll", the Zeigarnik effect) are flagged as not settled.
+The principles the system prompt names, each with its mechanism, when it applies, when it does not, the question that tests it, and where it becomes manipulation. Contested or misread claims (choice overload, "seven plus or minus two" for menus, the three-click rule, "users don't scroll", the Zeigarnik effect) are flagged as not settled. Also covers Gestalt grouping (proximity, similarity, common region, Prägnanz, uniform connectedness), applied only to supplied layouts; selective attention and change blindness; the paradox of the active user; flow; and Postel's law. Pareto, Parkinson, and Occam sit in a separate section as product heuristics, not psychology.
 
 **New: Severity (`knowledge/severity.md`)**
 Nielsen's 0 to 4 scale, bound to supplied artifacts. Frequency and persistence are supplied or assumed, ratings are for the people affected rather than the average, a broken floor sets a minimum of 3, and no overall score is given for a product or a screen.

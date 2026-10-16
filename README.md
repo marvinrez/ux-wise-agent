@@ -119,7 +119,7 @@ Naming a trade-off does not settle it, and a principle cited outside its scope i
 |---|---|
 | [`knowledge/arbitration.md`](knowledge/arbitration.md) | Which of two defensible directions wins: floors that are never traded, a design that keeps both, then a fixed tie-break order, and a verdict that states what would reverse it |
 | [`knowledge/states-and-edge-cases.md`](knowledge/states-and-edge-cases.md) | Which states and edge cases to ask about. A state you did not supply is a question, never a finding |
-| [`knowledge/applied-psychology.md`](knowledge/applied-psychology.md) | When a psychological principle applies, when it does not, where it becomes manipulation, and which popular claims are contested |
+| [`knowledge/applied-psychology.md`](knowledge/applied-psychology.md) | When a psychological or Gestalt principle applies, when it does not, where it becomes manipulation, and which popular claims are contested. Pareto, Parkinson, and Occam are kept apart as product heuristics |
 | [`knowledge/severity.md`](knowledge/severity.md) | How bad a problem in a supplied artifact is, on Nielsen's 0 to 4 scale, rated for the people affected |
 
 ---

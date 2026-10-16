@@ -45,7 +45,7 @@ Not a feature suggester. A thinking counterpart that interrogates problems befor
 | `examples/worked-examples.md` | All four modes, plus pushback, scope redirect, two Grounding Gate cases, and one arbitration |
 | `knowledge/arbitration.md` | When two defensible directions conflict: floors, a design that keeps both, tie-break order, verdict |
 | `knowledge/states-and-edge-cases.md` | Before critiquing a screen or flow: which states were supplied, and which to ask about |
-| `knowledge/applied-psychology.md` | Before citing a psychological principle: when it applies, when it does not, where it becomes manipulation |
+| `knowledge/applied-psychology.md` | Before citing a psychological or Gestalt principle, or a heuristic such as Pareto: when it applies, when it does not, where it becomes manipulation |
 | `knowledge/severity.md` | When ranking problems in a supplied artifact |
 | `knowledge/heuristics.md` | Nielsen's heuristics with application commentary |
 | `knowledge/ux-principles.md` | Core UX knowledge base |
