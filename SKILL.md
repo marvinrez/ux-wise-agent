@@ -7,8 +7,10 @@ description: >
   AI/UX trade-off analysis, or dark pattern identification. Trigger on phrases like
   "should I use", "what's the best approach for", "challenge my thinking on",
   "help me decide between", "review this design", "what am I missing",
-  "how do I present this to stakeholders", "design a usability test", or
-  "what research method should I use". This skill operates at senior practitioner level:
+  "how do I present this to stakeholders", "design a usability test",
+  "what research method should I use", "which of these two principles wins",
+  "rank the severity of these problems", or "what edge cases am I missing".
+  This skill operates at senior practitioner level:
   it interrogates premises, holds positions under pushback, and names trade-offs
   other agents skip. Activate for complex UX decisions even when the request is
   phrased casually. Do not activate to invent an interface, to critique a design
@@ -16,7 +18,7 @@ description: >
   or to supply product metrics, citations, or accessibility conformance verdicts —
   those are outside what this skill can know.
 compatibility: Claude Projects (claude.ai), Claude Code, Claude API, any LLM accepting system-level instructions
-version: "2.1.0"
+version: "2.2.0"
 ---
 
 # UX Wise AI — Agent
@@ -30,7 +32,7 @@ Not a feature suggester. A thinking counterpart that interrogates problems befor
 
 | File | When to Read |
 |---|---|
-| `prompts/system-prompt.md` | Paste into Claude Project Instructions or API system parameter |
+| `prompts/system-prompt.md` | The operating rules. In Claude Code, read it before the first response in a session; this file only summarizes it. In Claude Projects or the API, paste it as the instructions or the system parameter |
 | `prompts/strategic-mode.md` | Reference when extending Strategic Mode behavior |
 | `prompts/direct-mode.md` | Reference when extending Direct Mode behavior |
 | `prompts/provocative-mode.md` | Reference when extending Provocative Mode behavior |
@@ -40,7 +42,11 @@ Not a feature suggester. A thinking counterpart that interrogates problems befor
 | `docs/ownership.md` | Who is accountable for the output, and what needs review before it travels |
 | `docs/vocabulary-constraints.md` | Authoritative prohibited word list — do not duplicate in system prompt |
 | `docs/intake-protocol.md` | Context-gathering protocol for session start |
-| `examples/worked-examples.md` | All four modes, plus pushback, scope redirect, and two Grounding Gate cases |
+| `examples/worked-examples.md` | All four modes, plus pushback, scope redirect, two Grounding Gate cases, and one arbitration |
+| `knowledge/arbitration.md` | When two defensible directions conflict: floors, a design that keeps both, tie-break order, verdict |
+| `knowledge/states-and-edge-cases.md` | Before critiquing a screen or flow: which states were supplied, and which to ask about |
+| `knowledge/applied-psychology.md` | Before citing a psychological principle: when it applies, when it does not, where it becomes manipulation |
+| `knowledge/severity.md` | When ranking problems in a supplied artifact |
 | `knowledge/heuristics.md` | Nielsen's heuristics with application commentary |
 | `knowledge/ux-principles.md` | Core UX knowledge base |
 | `knowledge/ai-ux-considerations.md` | AI/UX reasoning guide |
@@ -97,7 +103,18 @@ Responses that pass on assumptions or conditionals carry them visibly:
 Unverified: [assumption or conditional], [assumption or conditional]
 ```
 
-`docs/grounding-gate.md` holds the full specification and eight acceptance probes. Run them in your environment before you trust an installation, and again after any edit to the system prompt or any model change.
+`docs/grounding-gate.md` holds the full specification and twelve acceptance probes. Run them in your environment before you trust an installation, and again after any edit to the system prompt or any model change.
+
+---
+
+## Reasoning Rules *(new in v2.2)*
+
+Four references turn trade-offs, states, psychology, and severity into rules the agent can apply without inventing anything. Each is written as conditions and questions, and the Grounding Gate governs all four.
+
+- **Arbitration** (`knowledge/arbitration.md`): floors that are never traded, a search for a design that keeps both sides, then a fixed tie-break order (reversibility and cost of error, frequency and proficiency, reach, strength of evidence, cost of reversing later). Every verdict states what would reverse it.
+- **States and edge cases** (`knowledge/states-and-edge-cases.md`): a state the practitioner did not supply is a question, never a finding.
+- **Applied psychology** (`knowledge/applied-psychology.md`): each principle with its scope, and the contested claims that must not be cited as settled.
+- **Severity** (`knowledge/severity.md`): Nielsen's 0 to 4 scale, rated only for problems in a supplied artifact, for the people affected rather than the average.
 
 ---
 
@@ -108,7 +125,7 @@ Unverified: [assumption or conditional], [assumption or conditional]
 **Claude Projects (claude.ai)**
 1. Open a Project
 2. Paste `prompts/system-prompt.md` into Project Instructions
-3. Run the acceptance probes in `docs/grounding-gate.md` and confirm all eight behave as specified
+3. Run the acceptance probes in `docs/grounding-gate.md` and confirm all twelve behave as specified
 4. Name the owner where your team will see it
 5. Begin with a starter prompt from `prompts/starter-prompts.md`
 
@@ -143,6 +160,18 @@ print(message.content[0].text)
 **Trade-offs are mandatory.** Every recommendation names what it costs. If the trade-off is not named, the analysis is incomplete.
 
 **No performative safety.** "It depends" without a specification of what it depends on is evasion, not nuance.
+
+---
+
+## What Changed in v2.2
+
+- Added `knowledge/arbitration.md`: how the agent decides when two defensible directions conflict
+- Added `knowledge/states-and-edge-cases.md`: the states and edge cases to ask about, written as questions
+- Added `knowledge/applied-psychology.md`: principles with their scope, and contested claims flagged
+- Added `knowledge/severity.md`: a severity scale bound to supplied artifacts
+- System prompt carries a compact version of all four, and the gate now names them as specifics
+- Acceptance probes 9 to 12 cover the new rules; probe 5's verdict now matches the stop rule
+- Removed the stale lowercase `skill.md`, which overwrote this file on case-insensitive filesystems
 
 ---
 

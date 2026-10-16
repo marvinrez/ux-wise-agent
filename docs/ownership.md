@@ -46,7 +46,7 @@ They did not build the model and they cannot fix its failure modes. The commitme
 Not a two-minute install. A two-minute install plus a decision.
 
 - [ ] Skill installed by one of the methods in `integrations/claude-skill.md`
-- [ ] Acceptance probes from `docs/grounding-gate.md` run in that environment, all eight behaving as specified
+- [ ] Acceptance probes from `docs/grounding-gate.md` run in that environment, all twelve behaving as specified
 - [ ] Human owner named, in writing, somewhere the team reads
 - [ ] Team told what the skill does not do — see the "Do Not Use This Skill For" list in `docs/boundaries.md`
 - [ ] Review expectation agreed for the output classes in the table above

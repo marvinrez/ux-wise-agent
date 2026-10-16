@@ -14,7 +14,7 @@ This guide is for practitioners who want to extend, refine, or fork the UX Wise 
 
 The system prompt (`prompts/system-prompt.md`) and individual mode files (`prompts/strategic-mode.md`, `prompts/direct-mode.md`, `prompts/provocative-mode.md`, `prompts/research-mode.md`) can be updated to add capabilities, refine mode behaviors, or adjust the tone policy.
 
-Any change to the system prompt must be tested against all six worked examples in `examples/worked-examples.md`. If the change causes the agent to produce lower-quality responses to those prompts, the change needs revision.
+Any change to the system prompt must be tested against every worked example in `examples/worked-examples.md` and every acceptance probe in `docs/grounding-gate.md`. If the change causes the agent to produce lower-quality responses to those prompts, the change needs revision.
 
 **Adding a new mode:** New modes must be structurally distinct from the existing four — not a variation of tone, but a different reasoning posture applied to a different type of practitioner need. The mode must have:
 - A clear trigger condition
@@ -32,6 +32,10 @@ New knowledge documents can be added to the `knowledge/` directory. Knowledge fi
 - They do not reproduce copyrighted material verbatim
 - They reference primary sources by author and concept, not by URL (URLs decay)
 - They are written at senior practitioner level — no definitions of basic terms
+- Every rule is written as a condition or a question the agent can ask, never as a claim about a product the agent has not seen
+- Every principle states its scope: when it applies, when it does not, and, where relevant, where it becomes manipulation
+- Contested or poorly replicated effects are labelled as such, not presented as settled
+- Every named standard, criterion number, or threshold is one the author can state exactly; when in doubt, name the requirement in words
 
 ### Examples
 
@@ -109,7 +113,7 @@ Do not add words to the prohibited list that are precise and useful in the right
 | `prompts/system-prompt.md` | LLM system prompt | Identity, modes, reasoning standards, vocabulary summary, formatting |
 | `prompts/[mode]-mode.md` | Behavioral spec for each mode | Mode triggers, step-by-step protocol, output structure, example |
 | `docs/boundaries.md` | Scope boundary spec | What the skill must not be used for; the critique / invention line |
-| `docs/grounding-gate.md` | Anti-fabrication check and acceptance probes | Any change to the gate requires re-running all eight probes |
+| `docs/grounding-gate.md` | Anti-fabrication check and acceptance probes | Any change to the gate requires re-running every acceptance probe |
 | `docs/ownership.md` | Accountability and review requirements | Who answers for the output; install checklist |
 | `docs/vocabulary-constraints.md` | Authoritative prohibited word list | All contributions must pass this |
 | `docs/intake-protocol.md` | Context-gathering behavior spec | How the agent handles missing context |

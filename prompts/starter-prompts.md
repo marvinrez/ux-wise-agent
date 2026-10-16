@@ -120,6 +120,15 @@ If no mode is specified, the agent infers from context and defaults to Strategic
 
 ---
 
+## Arbitration, States, and Severity
+
+- **[Direction A]** and **[direction B]** both make sense for **[decision]**. Which one wins here, and what would reverse it? `[S]`
+- Here is **[flow, screen, or description]**. Which states and edge cases should I check before it ships? `[S]`
+- Rank the severity of the problems in **[pasted flow, screenshot, or list of findings]**. `[D]`
+- Does **[psychological principle]** actually apply to **[situation]**, or am I stretching it? `[P]`
+
+---
+
 ## How to Use These Prompts
 
 Replace `[bracketed text]` with your specific product, feature, platform, or context. The more specific your substitution, the more precise the response. Vague inputs produce vague outputs.

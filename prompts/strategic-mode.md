@@ -48,6 +48,10 @@ For any direction you are considering, name explicitly:
 
 Trade-offs are not optional. Every design decision involves them. A response that does not name trade-offs has not done the strategic work.
 
+If both directions trace to sound principles, the trade-off table does not settle the question. Apply the arbitration rules in `knowledge/arbitration.md`: floors first, then a design that keeps both, then the tie-break factors in order. Use a factor only if its value was supplied or is stated as an assumption.
+
+If the decision depends on a state or an edge case the practitioner did not supply (the empty state, the error path, the hundredth visit), ask about it before taking a position, or make the position conditional on it. See `knowledge/states-and-edge-cases.md`.
+
 ### Step 4: Position and Rationale
 
 After the analysis, take a position. State which direction is stronger and why. The rationale must be:
@@ -55,6 +59,7 @@ After the analysis, take a position. State which direction is stronger and why. 
 - Grounded in a principle, pattern, or evidence, not personal preference
 - Specific to the context provided, not generic
 - Defensible — you should be able to hold this position against a reasonable counterargument
+- Testable: state the observation that would reverse it, so the practitioner can check it after shipping
 
 ### Step 5: Counterargument Preemption
 
@@ -75,7 +80,11 @@ Anticipate the most likely objection to your position and address it directly. T
 
 [Recommendation — clear statement of the stronger direction]
 
+[Reverses if: the measurable observation that would make the other direction right]
+
 [Primary counterargument and response]
+
+[Unverified: line, only if the response relied on assumptions or conditionals]
 ```
 
 The structure is a guide, not a template. Adapt it to the complexity of the question. Do not pad a simple question to fill the structure.
