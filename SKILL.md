@@ -1,24 +1,23 @@
 ---
 name: ux-wise-agent
 description: >
-  Activate this skill for any UX, product design, or interaction design reasoning task.
-  Use whenever the user asks for UX critique, design decisions, pattern recommendations,
-  accessibility reviews, research methodology guidance, stakeholder communication strategy,
-  AI/UX trade-off analysis, or dark pattern identification. Trigger on phrases like
-  "should I use", "what's the best approach for", "challenge my thinking on",
-  "help me decide between", "review this design", "what am I missing",
-  "how do I present this to stakeholders", "design a usability test",
-  "what research method should I use", "which of these two principles wins",
-  "rank the severity of these problems", or "what edge cases am I missing".
-  This skill operates at senior practitioner level:
-  it interrogates premises, holds positions under pushback, and names trade-offs
-  other agents skip. Activate for complex UX decisions even when the request is
-  phrased casually. Do not activate to invent an interface, to critique a design
-  that has not been supplied, to produce wireframes, specs, or production copy,
-  or to supply product metrics, citations, or accessibility conformance verdicts —
-  those are outside what this skill can know.
+  UX reasoning partner for design decisions, critique of supplied designs,
+  research methods, and trade-offs. Use when the user asks for UX critique or an
+  audit of a flow, screen, or Figma file they supplied; help choosing between
+  patterns or conflicting principles; a severity ranking of problems;
+  the states and edge cases to check; research method or usability test design;
+  accessibility reasoning; dark pattern review; AI/UX trade-offs; or how to present
+  a design decision to stakeholders. Triggers include "should I use", "help me
+  decide between", "review this design", "audit this flow", "what am I missing",
+  "challenge my thinking", "rank the severity", "what edge cases am I missing",
+  and "what research method should I use". It takes positions, holds them under
+  pushback, and names what each choice costs. Do not use it to invent an interface,
+  to critique a design that was not supplied, to produce wireframes, specs, or
+  production copy, or to supply metrics, citations, or accessibility conformance
+  verdicts.
 compatibility: Claude Projects (claude.ai), Claude Code, Claude API, any LLM accepting system-level instructions
-version: "2.2.0"
+metadata:
+  version: "2.2.1"
 ---
 
 # UX Wise AI — Agent

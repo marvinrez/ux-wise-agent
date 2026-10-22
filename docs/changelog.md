@@ -2,7 +2,16 @@
 
 ---
 
-## v2.2.0 (Current Release)
+## v2.2.1 (Current Release)
+
+**Release date:** 2026
+
+**Fixed: `SKILL.md` frontmatter now passes the skill upload validator**
+The claude.ai skill uploader accepts only `name`, `description`, `license`, `allowed-tools`, `metadata`, and `compatibility` in the frontmatter, and limits the description to 1,024 characters. v2.2.0 had a top-level `version` key and a 1,195-character description, so it could not be uploaded. The version now sits under `metadata`, and the description was rewritten at 1,024 characters or fewer with the same triggers and the same exclusions.
+
+---
+
+## v2.2.0
 
 **Release date:** 2026
 
