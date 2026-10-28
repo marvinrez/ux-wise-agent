@@ -1,0 +1,110 @@
+name: gatecheck
+
+# Nothing here reaches a model or spends anything. The suite reads what is in
+# the repository: the pasted answers in gatecheck/runlog and the pasteable block
+# in prompts/system-prompt.md.
+#
+#   samples  Two things, across the whole supported Python range. It checks
+#              the checks against hand-written samples with known outcomes, and
+#              it checks the exit-code contract by breaking a throwaway copy of
+#              the repository one way at a time. The second is what makes the
+#              matrix mean something: selftest.py imports nothing newer than
+#              pathlib and passed on 3.9, so for a while three versions were
+#              being tested and the 3.11 floor was not. This is the job that
+#              must stay green.
+#
+#   packaging  Both manifests parse, the version in plugin.json is the version
+#              in SKILL.md, and git is tracking all three. `claude plugin
+#              validate` is the authority on the manifests and needs the CLI, so
+#              this checks what the files alone can settle. The tracking check
+#              is there because this repository announced an install command for
+#              a manifest that existed only on one disk, and the two invariants
+#              above passed throughout, since they read the disk and an install
+#              reads what was pushed.
+#
+#   suite      Re-reads the pasted answers, and needs samples to have
+#              passed, because a broken pattern layer makes its output
+#              meaningless. An empty runlog fails the job rather than passing
+#              quietly: the notice used to exit 0, which is the green this
+#              comment claimed was impossible. An answer nobody has ruled on
+#              exits 2 and fails too, which is the point: a result with no
+#              reviewer behind it is unfinished.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+# Nothing here writes anything.
+permissions:
+  contents: read
+
+# A superseded run on the same ref is wasted work.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  samples:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        # 3.11 is the advertised floor, so it is the one that has to be tested.
+        python-version: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Check the checks
+        run: python gatecheck/selftest.py
+      - name: Check the exit-code contract
+        run: python gatecheck/test_run_probes.py
+
+  packaging:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Manifests parse, the version agrees, and git tracks all three
+        run: python gatecheck/check_packaging.py
+      - name: No mangled paragraph and no broken wrap
+        run: python gatecheck/check_prose.py
+
+  suite:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    needs: samples
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Has anything been pasted
+        id: pasted
+        run: |
+          n=$(python gatecheck/run_probes.py --count-answers)
+          total=$(python gatecheck/run_probes.py --count-probes)
+          echo "n=$n" >> "$GITHUB_OUTPUT"
+          echo "$n of $total probe files carry an answer"
+      - name: Read the answers
+        if: steps.pasted.outputs.n != '0'
+        run: python gatecheck/run_probes.py
+      - name: Nothing pasted yet
+        if: steps.pasted.outputs.n == '0'
+        run: |
+          echo "::error::gatecheck/runlog holds only scaffolding, so there is nothing to read."
+          echo "::error::Run the probes where you use the agent, paste each answer, set a ruling."
+          exit 1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gatecheck-report
+          path: gatecheck/report.json
+          if-no-files-found: ignore

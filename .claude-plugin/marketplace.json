@@ -1,0 +1,22 @@
+{
+  "name": "ux-wise",
+  "owner": {
+    "name": "Marcos Rezende",
+    "url": "https://github.com/marvinrez"
+  },
+  "description": "The UX Wise Agent, a UX reasoning skill whose every claim has to trace to something the practitioner supplied.",
+  "plugins": [
+    {
+      "name": "ux-wise-agent",
+      "source": "./",
+      "description": "A senior-level UX reasoning partner that will not invent what it was not given. Critique, arbitration, severity, states and deceptive patterns, each bound to a supplied artifact.",
+      "category": "design",
+      "tags": [
+        "ux",
+        "design-critique",
+        "accessibility",
+        "deceptive-patterns"
+      ]
+    }
+  ]
+}
