@@ -1,4 +1,4 @@
-# Starter Prompts — UX Wise AI Agent v2.0
+# Starter Prompts: UX Wise AI Agent v2.3
 
 **Curated by Marcos Rezende**
 [marcosrezende.com](https://marcosrezende.com)

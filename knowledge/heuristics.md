@@ -1,6 +1,8 @@
-# Nielsen's Heuristics — Applied Reference
+# Nielsen's Heuristics: Applied Reference
 
-This is not a summary of the heuristics — it is a working reference that documents how each heuristic is applied at a senior practitioner level, where the failure modes appear in real products, and what questions to ask when auditing against each one.
+This is not a summary of the heuristics. It is a working reference that documents how each heuristic is applied at a senior practitioner level, where the failure modes appear in real products, and what questions to ask when auditing against each one.
+
+**Source of the ten:** the heuristics are Jakob Nielsen's, first published as *Enhancing the explanatory power of usability heuristics* (CHI 1994) and maintained since by the Nielsen Norman Group, where the current wording differs from the original. The one-line statement under each heading below is this file's own formulation, not a quotation, so that the wording can be checked against the source rather than mistaken for it. Where you need to cite one, cite Nielsen, not this file.
 
 ---
 
@@ -12,7 +14,7 @@ When auditing a product or evaluating a design decision, use the "diagnostic que
 
 ## 1. Visibility of System Status
 
-The system should always keep users informed about what is going on, through appropriate feedback within a reasonable time.
+The interface says what state the system is in, soon enough for the user to act on it, and in terms of what the user just did.
 
 **What this means at practice level:** Every user action creates an expectation. The interface must fulfill that expectation — not with generic feedback, but with feedback that is specific to what the user just did and what is happening as a result.
 
@@ -31,7 +33,7 @@ The system should always keep users informed about what is going on, through app
 
 ## 2. Match Between System and the Real World
 
-The system should speak the users' language, using words, phrases, and concepts familiar to the user, rather than system-oriented terms.
+The words, images and ordering belong to the user's world rather than to the system's internals or the team's vocabulary.
 
 **What this means at practice level:** The language and conceptual model of the interface must map to the mental model the user brings from their domain, not to the architecture of the system underneath the interface.
 
@@ -49,7 +51,7 @@ The system should speak the users' language, using words, phrases, and concepts 
 
 ## 3. User Control and Freedom
 
-Users often choose system functions by mistake and will need a clearly marked "emergency exit" to leave the unwanted state without having to go through an extended dialogue.
+A user who arrives somewhere they did not intend can leave without completing anything, and can take back what they just did. The way out is visible before it is needed.
 
 **What this means at practice level:** Users make mistakes. They explore. They change their minds. The interface must allow recovery at every point where a user can take an action with consequences — and "recovery" means returning to a known safe state without data loss, without re-entering previously provided information, and without needing to understand why the error occurred.
 
@@ -67,7 +69,7 @@ Users often choose system functions by mistake and will need a clearly marked "e
 
 ## 4. Consistency and Standards
 
-Users should not have to wonder whether different words, situations, or actions mean the same thing.
+One thing carries one name and one behaviour everywhere in the product, and matches the platform convention where the platform has one.
 
 **What this means at practice level:** Consistency operates at multiple levels simultaneously: terminology consistency (the same concept is always called the same thing), interaction consistency (the same gesture or click always produces the same type of result), visual consistency (the same visual pattern always signals the same type of element or affordance), and cross-platform consistency (behavior learned on one surface transfers to another).
 
@@ -85,7 +87,7 @@ Users should not have to wonder whether different words, situations, or actions 
 
 ## 5. Error Prevention
 
-Even better than good error messages is a careful design which prevents a problem from occurring in the first place.
+Removing the conditions that make a mistake possible beats explaining the mistake afterwards. Where the condition cannot be removed, the commitment is confirmed before it becomes irreversible.
 
 **What this means at practice level:** Error prevention means designing the interface so that the class of errors you want to prevent is structurally difficult to make. This is not the same as adding warnings — warnings are error notification, not error prevention. Real error prevention constrains the action space so that invalid states are not reachable.
 
@@ -103,7 +105,7 @@ Even better than good error messages is a careful design which prevents a proble
 
 ## 6. Recognition Over Recall
 
-Minimize the user's memory load by making objects, actions, and options visible. The user should not have to remember information from one part of the dialogue to another.
+What the user needs is on screen when they need it, so nothing has to be carried in memory from one step to the next.
 
 **What this means at practice level:** Every time the user must hold information in working memory in order to proceed, the interface is creating cognitive load that could be eliminated by surfacing that information at the point of use.
 
@@ -121,7 +123,7 @@ Minimize the user's memory load by making objects, actions, and options visible.
 
 ## 7. Flexibility and Efficiency of Use
 
-Accelerators — unseen by the novice user — may often speed up the interaction for the expert user such that the system can cater to both inexperienced and experienced users.
+The product is learnable by someone who has never opened it and fast for someone who opens it daily, with the shortcuts available to the second and out of the way of the first.
 
 **What this means at practice level:** The interface should have multiple layers of interaction speed — a discoverable path that guides novice or infrequent users, and a faster path available to users who have built proficiency. The novice path should not slow down the expert. The expert path should not be required of the novice.
 
@@ -139,7 +141,7 @@ Accelerators — unseen by the novice user — may often speed up the interactio
 
 ## 8. Aesthetic and Minimalist Design
 
-Dialogues should not contain irrelevant or rarely needed information. Every extra unit of information competes with the relevant information and diminishes its relative visibility.
+Everything on screen competes with everything else for attention, so an element that is not needed now is taking visibility from one that is.
 
 **What this means at practice level:** This heuristic is about information hierarchy, not visual simplicity. The interface should foreground the information and actions the user needs for the task at hand and background everything else. This does not mean removing features — it means removing features from the visual foreground of contexts where they are irrelevant.
 
@@ -157,7 +159,7 @@ Dialogues should not contain irrelevant or rarely needed information. Every extr
 
 ## 9. Help Users Recognize, Diagnose, and Recover from Errors
 
-Error messages should be expressed in plain language (no codes), precisely indicate the problem, and constructively suggest a solution.
+An error says in plain words what went wrong, where it went wrong, and what the user can do next. No codes, and no blame.
 
 **What this means at practice level:** An error message that meets this heuristic answers three questions: what happened, whether it is the user's fault or the system's fault, and what to do next. An error message that answers fewer than three of these questions is not complete.
 
@@ -176,7 +178,7 @@ Error messages should be expressed in plain language (no codes), precisely indic
 
 ## 10. Help and Documentation
 
-Even though it is better if the system can be used without documentation, it may be necessary to provide help. Any such information should be easy to search, focused on the user's task, list concrete steps to be carried out, and not be too large.
+Help is reachable from where the task is, searchable, scoped to what the user is doing, and short enough to be read in the middle of the work.
 
 **What this means at practice level:** When users need documentation — and for complex products, they will — the documentation must be findable, organized around the user's task rather than the product's feature set, and specific enough to be actionable.
 

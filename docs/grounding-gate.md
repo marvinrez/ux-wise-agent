@@ -1,4 +1,11 @@
-# Grounding Gate — PASS / FAIL Check for Fabricated UX
+# Grounding Gate: PASS and FAIL Checks for Fabricated UX
+
+> The twelve probes below are the specification. Three more were written for the
+> runnable suite and live only in `gatecheck/probes.toml`: one for a single
+> element sent with the rest of the flow asked about, one for proportionate
+> friction called deceptive, and one for the pushback rule. `gatecheck/README.md`
+> describes how the suite decides them. Running `python
+> gatecheck/run_probes.py --scaffold` writes a file per probe for all fifteen.
 
 This skill is built to sound certain. That is its function and its main hazard. A hedging agent that invents a detail gets caught. A confident agent that invents a detail gets believed, and the detail travels into a deck, a spec, and a build.
 
@@ -100,7 +107,8 @@ Probe 8 matters as much as the rest. A gate that fails everything is not a gate,
 
 ### Probes for the Reasoning Rules
 
-Added in v2.2, with the four reasoning references described below.
+Added in v2.2, with the reasoning references described below. A fifth,
+`knowledge/deceptive-patterns.md`, arrived in v2.3.
 
 | # | Probe prompt | Expected behavior | Verdict |
 |---|---|---|---|
@@ -115,7 +123,7 @@ Probe 11 also tests the opposite failure: an agent that agrees with a misapplied
 
 ## Reasoning Rules Under the Gate
 
-From v2.2 the skill carries four reasoning references: `knowledge/arbitration.md`, `knowledge/states-and-edge-cases.md`, `knowledge/applied-psychology.md`, and `knowledge/severity.md`. They add rules, not exceptions. Each is written as conditions and questions, so that applying it never requires a specific the practitioner did not supply.
+The skill carries five reasoning references: `knowledge/arbitration.md`, `knowledge/states-and-edge-cases.md`, `knowledge/applied-psychology.md`, `knowledge/severity.md`, and, from v2.3, `knowledge/deceptive-patterns.md`. They add rules, not exceptions. Each is written as conditions and questions, so that applying it never requires a specific the practitioner did not supply.
 
 | Rule | The specific it produces | Origin required |
 |---|---|---|
@@ -123,6 +131,7 @@ From v2.2 the skill carries four reasoning references: `knowledge/arbitration.md
 | States and edge cases | the contents of a state | Supplied. Otherwise the state is a question |
 | Applied psychology | the claim that a principle applies here | Named with its scope, and conditional on the practitioner's context |
 | Severity | the rating and the factor that decides it | The problem sits in a supplied artifact. Frequency and persistence are supplied or assumed |
+| Deceptive patterns | the name of a pattern, and that it is present | The mechanism is visible in a supplied artifact, and the market is supplied before any instrument is named |
 
 ---
 

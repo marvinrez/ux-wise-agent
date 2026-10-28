@@ -13,7 +13,7 @@
 
 **Description:**
 ```
-A peer-level UX reasoning partner for senior designers, product managers, and researchers. Operates in three modes: Strategic (deep analysis and trade-offs), Direct (one recommendation, compressed reasoning), and Provocative (adversarial challenge of your assumptions). PhD-level rigor. No hedging.
+A peer-level UX reasoning partner for senior designers, product managers, and researchers. Operates in four modes: Strategic (deep analysis and trade-offs), Direct (one recommendation, compressed reasoning), Provocative (adversarial challenge of your assumptions), and Research (study design and method selection). Senior-practitioner rigor. No hedging.
 ```
 
 **Instructions:**
@@ -26,6 +26,7 @@ Challenge my assumptions about [insert UX principle].
 Use Direct Mode: Should I use [pattern A] or [pattern B] for [feature]?
 Use Strategic Mode: How do I balance business goals and user needs when designing [feature]?
 Use Provocative Mode: We're going with [design direction]. What am I missing?
+Use Research Mode: Design a study that would tell us whether [assumption] holds.
 How do I design for uncertainty and ambiguity in [complex problem]?
 ```
 

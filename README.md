@@ -8,7 +8,7 @@ UX Wise AI operates at the intersection of rigorous design thinking, behavioral 
 
 ## What This Is
 
-UX Wise AI is a structured skill definition designed for Claude (Anthropic), custom GPTs, and any LLM platform that accepts system-level instructions. The skill transforms a general-purpose language model into a focused UX reasoning partner with a defined critical posture, vocabulary constraints, and four operational modes.
+UX Wise AI is a structured skill definition designed for Claude (Anthropic), custom GPTs, and any LLM platform that accepts system-level instructions. The skill turns a general-purpose language model into a focused UX reasoning partner with a defined critical posture, vocabulary constraints, and four operational modes.
 
 This is not a collection of UX tips. It is a reasoning framework that interrogates problems before offering direction.
 
@@ -25,20 +25,18 @@ This is not a collection of UX tips. It is a reasoning framework that interrogat
 
 ---
 
-## Core Capabilities
+## Knowledge Areas
 
 | Capability | Description |
 |---|---|
 | User-Centered Design | Heuristics, usability principles, interaction patterns, and failure modes |
 | Problem-Solving and Product Thinking | Frameworks for decomposing complex UX challenges into tractable decisions |
-| Data-Driven Decision-Making | Balancing qualitative signals, quantitative evidence, and business constraints |
-| Creativity and Ideation | Divergent thinking techniques grounded in real design constraints |
+| Behavioral Psychology | Principles with their scope attached, and the contested ones named as contested |
 | Accessibility and Inclusion | WCAG, cognitive load, and universal design applied to real product decisions |
 | AI and Automation in UX | Where AI helps design, where it distorts it, and how to tell the difference |
 | Ethics and Responsibility | Dark patterns, fairness in interfaces, trust as a design material |
 | Research Methodology | Study design, method selection, protocol structure, and analysis approach |
-| Effective Communication | How to present design decisions to stakeholders who think in revenue, not flows |
-| Strategic Decision Support | Prioritization, trade-off analysis, and the long-term cost of design debt |
+| Communication and Influence | How to present design decisions to stakeholders who think in revenue, not flows |
 
 ---
 
@@ -105,7 +103,7 @@ Responses that pass on assumptions or conditionals carry them visibly, on one pl
 Unverified: [assumption or conditional], [assumption or conditional]
 ```
 
-[`docs/grounding-gate.md`](docs/grounding-gate.md) holds the full specification and twelve **acceptance probes**: prompts with expected verdicts. Run them in your environment before trusting an installation, and again after any system prompt edit or model change. The eighth probe checks that the gate has not simply become a mute button: a normal question with full context should still get a full answer.
+[`docs/grounding-gate.md`](docs/grounding-gate.md) holds the full specification and twelve **acceptance probes**: prompts with expected verdicts. [`gatecheck/`](gatecheck/README.md) carries those twelve plus three more as a suite that runs and returns an exit code. Run them in your environment before trusting an installation, and again after any system prompt edit or model change. The eighth probe checks that the gate has not simply become a mute button: a normal question with full context should still get a full answer.
 
 The gate catches fabrication, not error. A response can pass every check and still be wrong about the trade-off.
 
@@ -113,7 +111,7 @@ The gate catches fabrication, not error. A response can pass every check and sti
 
 ## Reasoning Rules *(new in v2.2)*
 
-Naming a trade-off does not settle it, and a principle cited outside its scope is a fabricated specific with a respectable name. Four references give the agent rules for both, and the Grounding Gate governs every one of them. Each is written as conditions and questions, so applying it never requires a detail you did not supply.
+Naming a trade-off does not settle it, and a principle cited outside its scope is a fabricated specific with a respectable name. Five references give the agent rules for both, and the Grounding Gate governs every one of them. Each is written as conditions and questions, so applying it never requires a detail you did not supply.
 
 | Reference | What it decides |
 |---|---|
@@ -121,6 +119,7 @@ Naming a trade-off does not settle it, and a principle cited outside its scope i
 | [`knowledge/states-and-edge-cases.md`](knowledge/states-and-edge-cases.md) | Which states and edge cases to ask about. A state you did not supply is a question, never a finding |
 | [`knowledge/applied-psychology.md`](knowledge/applied-psychology.md) | When a psychological or Gestalt principle applies, when it does not, where it becomes manipulation, and which popular claims are contested. Pareto, Parkinson, and Occam are kept apart as product heuristics |
 | [`knowledge/severity.md`](knowledge/severity.md) | How bad a problem in a supplied artifact is, on Nielsen's 0 to 4 scale, rated for the people affected |
+| [`knowledge/deceptive-patterns.md`](knowledge/deceptive-patterns.md) | Which patterns are deceptive, what must have been supplied before one can be claimed, which break the honesty floor, what is not one, and which market a requirement belongs to |
 
 ---
 
@@ -139,17 +138,32 @@ ux-wise-agent/
 │   └── research-mode.md              ← Research Mode prompt layer (new in v2.0)
 ├── examples/
 │   └── worked-examples.md            ← Nine examples: four modes, pushback, scope redirect, two gate cases, one arbitration
+├── .claude-plugin/
+│   ├── plugin.json                   ← Plugin manifest for Claude Code (new in v2.3)
+│   └── marketplace.json              ← Makes this repository its own marketplace (new in v2.3)
 ├── knowledge/
 │   ├── arbitration.md                ← Deciding between two defensible directions (new in v2.2)
+│   ├── deceptive-patterns.md         ← Deceptive patterns, each bound to a supplied artifact (new in v2.3)
 │   ├── states-and-edge-cases.md      ← States and edge cases to ask about, as questions (new in v2.2)
 │   ├── applied-psychology.md         ← Principles with their scope; contested claims flagged (new in v2.2)
 │   ├── severity.md                   ← Severity scale for problems in supplied artifacts (new in v2.2)
 │   ├── ux-principles.md              ← Core UX knowledge base
 │   ├── heuristics.md                 ← Nielsen's heuristics with applied commentary
 │   └── ai-ux-considerations.md       ← AI-specific UX reasoning guide
+├── gatecheck/                        ← The acceptance probes as a runnable suite (new in v2.3)
+│   ├── probes.toml                   ← The fifteen probes, declaratively
+│   ├── checks.py                     ← The deterministic patterns, and the catalogue that names them
+│   ├── run_probes.py                 ← Scaffold, read, report, exit code
+│   ├── selftest.py                   ← Samples with known outcomes, both directions per pattern
+│   ├── check_packaging.py            ← Both manifests parse, and their version is SKILL.md's
+│   ├── fixtures/                     ← Pictures a probe sends. P12 needs one here
+│   ├── runlog/                       ← One file per probe. These are the record
+│   └── README.md                     ← What the two layers decide, and what the suite cannot supply
 ├── integrations/
 │   ├── claude-skill.md               ← How to use as a Claude Project or API skill
 │   └── custom-gpt.md                 ← How to deploy in OpenAI custom GPTs
+├── LICENSE                           ← MIT
+├── .gitignore
 └── docs/
     ├── boundaries.md                 ← When not to use it: the critique / invention line (new in v2.1)
     ├── grounding-gate.md             ← PASS/FAIL check against fabricated UX + acceptance probes (new in v2.1)
@@ -159,6 +173,10 @@ ux-wise-agent/
     ├── intake-protocol.md            ← Context-gathering protocol (new in v2.0)
     └── changelog.md                  ← Version history
 ```
+
+`.github/workflows/gatecheck.yml` runs the suite on every pull request, on
+pushes to `main`, and on demand. It needs no key
+and no secret, because nothing in `gatecheck/` calls a model.
 
 ---
 
@@ -172,11 +190,36 @@ Before the skill's output informs anything beyond your own desk, name one human 
 
 Working alone? You are the owner by default, and the probes are how you find out what you are working with. Full checklist and the review table — which outputs can travel unreviewed and which cannot — in [`docs/ownership.md`](docs/ownership.md).
 
+**Which path.** Installing as a plugin if you work in Claude Code, because the
+skill then activates on its own description and the files travel with it. Paste
+the system prompt if you work on claude.ai or through the API, because there is
+nothing to install there. The two are the same rules; what differs is who loads
+them.
+
+**Using with Claude Code (plugin)**
+
+```
+/plugin install ux-wise-agent --marketplace marvinrez/ux-wise-agent
+```
+
+The repository is its own marketplace, so that line registers it and installs the
+skill in one step. On Claude Code before 2.1.275, add the marketplace first with
+`/plugin marketplace add marvinrez/ux-wise-agent` and then install. To load a
+local checkout without installing anything, start Claude Code with
+`claude --plugin-dir /path/to/ux-wise-agent`.
+
+Once installed the skill activates on its own description.
+`prompts/system-prompt.md` is still the operating rules, so read it before the
+first response in a session. Then run the suite in
+[`gatecheck/`](gatecheck/README.md), which is the twelve acceptance probes in
+[`docs/grounding-gate.md`](docs/grounding-gate.md) plus two for the
+deceptive-pattern catalogue and one for the pushback rule, and name the owner.
+
 **Using with Claude (claude.ai)**
 
 1. Open a new Project in Claude
 2. Paste the contents of `prompts/system-prompt.md` into the Project instructions
-3. Run the twelve acceptance probes in [`docs/grounding-gate.md`](docs/grounding-gate.md) and confirm each behaves as specified
+3. Run the acceptance probes and confirm each behaves as specified. Twelve are specified in [`docs/grounding-gate.md`](docs/grounding-gate.md) and three more live in [`gatecheck/probes.toml`](gatecheck/probes.toml); with the repository checked out, `python gatecheck/run_probes.py --scaffold` sets all fifteen up to paste into
 4. Name the owner where your team will see it
 5. Start with a starter prompt or go straight to your problem
 

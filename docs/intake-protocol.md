@@ -56,7 +56,7 @@ When context is available or inferred, the following dimensions have the highest
 Is this a reversible or irreversible decision? A reversible design decision (a UI layout, a copy change) tolerates less analysis than an irreversible one (a platform architecture choice, a data model commitment). The depth of analysis should match the cost of being wrong.
 
 **Product stage and user scale**
-Pre-launch, growth, and mature products have different risk profiles and different constraints. A recommendation optimized for speed is appropriate pre-launch. The same recommendation may be inappropriate for a product where changes affect millions of existing users with established mental models.
+Pre-launch, growth, and mature products have different risk profiles and different constraints. A recommendation built for speed is appropriate pre-launch. The same recommendation may be inappropriate for a product where changes affect millions of existing users with established mental models.
 
 **User sophistication**
 Technical users, domain experts, and general consumers require different interface philosophies. An enterprise product used by analysts tolerates density and power that would fail on a consumer interface.

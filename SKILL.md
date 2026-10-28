@@ -1,24 +1,20 @@
 ---
 name: ux-wise-agent
 description: >
-  Activate this skill for any UX, product design, or interaction design reasoning task.
-  Use whenever the user asks for UX critique, design decisions, pattern recommendations,
-  accessibility reviews, research methodology guidance, stakeholder communication strategy,
-  AI/UX trade-off analysis, or dark pattern identification. Trigger on phrases like
-  "should I use", "what's the best approach for", "challenge my thinking on",
-  "help me decide between", "review this design", "what am I missing",
-  "how do I present this to stakeholders", "design a usability test",
-  "what research method should I use", "which of these two principles wins",
-  "rank the severity of these problems", or "what edge cases am I missing".
-  This skill operates at senior practitioner level:
-  it interrogates premises, holds positions under pushback, and names trade-offs
-  other agents skip. Activate for complex UX decisions even when the request is
-  phrased casually. Do not activate to invent an interface, to critique a design
-  that has not been supplied, to produce wireframes, specs, or production copy,
-  or to supply product metrics, citations, or accessibility conformance verdicts —
-  those are outside what this skill can know.
+  Activate for any UX, product design, or interaction design reasoning task: UX
+  critique, design decisions, interface pattern recommendations, accessibility
+  reviews, research methodology, stakeholder communication, AI/UX trade-offs, or
+  deceptive pattern identification. Trigger on requests like "review this design",
+  "which interaction pattern should I use here", "challenge my thinking on this
+  flow", "design a usability test", "which of these two principles wins", or
+  "what edge cases am I missing". It works at senior practitioner level: it
+  interrogates premises, holds positions under pushback, and names the trade-off
+  in every recommendation. Activate even when the request is phrased casually. Do
+  not activate to invent an interface, to critique a design that has not been
+  supplied, to produce wireframes, specs, or production copy, or to supply product
+  metrics, citations, or conformance verdicts, which this skill cannot know.
 compatibility: Claude Projects (claude.ai), Claude Code, Claude API, any LLM accepting system-level instructions
-version: "2.2.0"
+version: "2.3.0"
 ---
 
 # UX Wise AI — Agent
@@ -47,6 +43,7 @@ Not a feature suggester. A thinking counterpart that interrogates problems befor
 | `knowledge/states-and-edge-cases.md` | Before critiquing a screen or flow: which states were supplied, and which to ask about |
 | `knowledge/applied-psychology.md` | Before citing a psychological or Gestalt principle, or a heuristic such as Pareto: when it applies, when it does not, where it becomes manipulation |
 | `knowledge/severity.md` | When ranking problems in a supplied artifact |
+| `knowledge/deceptive-patterns.md` | Before naming a deceptive pattern, or deciding something is not one: what each pattern is, what must have been supplied to claim it, whether it is a floor, and which market any requirement belongs to |
 | `knowledge/heuristics.md` | Nielsen's heuristics with application commentary |
 | `knowledge/ux-principles.md` | Core UX knowledge base |
 | `knowledge/ai-ux-considerations.md` | AI/UX reasoning guide |
@@ -103,18 +100,19 @@ Responses that pass on assumptions or conditionals carry them visibly:
 Unverified: [assumption or conditional], [assumption or conditional]
 ```
 
-`docs/grounding-gate.md` holds the full specification and twelve acceptance probes. Run them in your environment before you trust an installation, and again after any edit to the system prompt or any model change.
+`docs/grounding-gate.md` holds the full specification and twelve acceptance probes, and `gatecheck/` holds those twelve plus three more as a suite that runs and returns an exit code. Run them in your environment before you trust an installation, and again after any edit to the system prompt or any model change.
 
 ---
 
 ## Reasoning Rules *(new in v2.2)*
 
-Four references turn trade-offs, states, psychology, and severity into rules the agent can apply without inventing anything. Each is written as conditions and questions, and the Grounding Gate governs all four.
+Five references turn trade-offs, states, psychology, severity, and deceptive patterns into rules the agent can apply without inventing anything. Each is written as conditions and questions, and the Grounding Gate governs all five.
 
 - **Arbitration** (`knowledge/arbitration.md`): floors that are never traded, a search for a design that keeps both sides, then a fixed tie-break order (reversibility and cost of error, frequency and proficiency, reach, strength of evidence, cost of reversing later). Every verdict states what would reverse it.
 - **States and edge cases** (`knowledge/states-and-edge-cases.md`): a state the practitioner did not supply is a question, never a finding.
 - **Applied psychology** (`knowledge/applied-psychology.md`): each principle with its scope, and the contested claims that must not be cited as settled.
 - **Severity** (`knowledge/severity.md`): Nielsen's 0 to 4 scale, rated only for problems in a supplied artifact, for the people affected rather than the average.
+- **Deceptive patterns** (`knowledge/deceptive-patterns.md`): what each pattern is, what must have been supplied before the agent may claim it, which break the honesty floor, what is not one, and which market any requirement belongs to.
 
 ---
 
@@ -125,7 +123,7 @@ Four references turn trade-offs, states, psychology, and severity into rules the
 **Claude Projects (claude.ai)**
 1. Open a Project
 2. Paste `prompts/system-prompt.md` into Project Instructions
-3. Run the acceptance probes in `docs/grounding-gate.md` and confirm all twelve behave as specified
+3. Run the acceptance probes and confirm each behaves as specified: the twelve in `docs/grounding-gate.md`, plus three in `gatecheck/probes.toml`. With the repository checked out, `python gatecheck/run_probes.py --scaffold` sets all fifteen up
 4. Name the owner where your team will see it
 5. Begin with a starter prompt from `prompts/starter-prompts.md`
 
@@ -162,6 +160,27 @@ print(message.content[0].text)
 **No performative safety.** "It depends" without a specification of what it depends on is evasion, not nuance.
 
 ---
+
+## What Changed in v2.3
+
+**Deceptive patterns, bound to a supplied artifact.** `knowledge/deceptive-patterns.md`
+carries the taxonomy the honesty floor names: 36 entries in 10 categories, each
+with the evidence that must have been supplied before the agent may claim it, and
+none carrying a severity. A section on what is *not* a deceptive pattern comes
+first, because naming a false one costs the standing to name a real one.
+
+**The market, before the instrument.** A requirement belongs to a place, so the
+market is a supplied fact. Ten sections name the markets the file covers, from
+the EU and the US states to Brazil, India, South Korea and Canada, and one says
+plainly that most of the world is not among them.
+
+**`gatecheck/`.** The acceptance probes as a runnable suite: fifteen probes, 26
+deterministic checks, 186 samples that check the checks in both directions, and a
+reviewer's ruling written into each answer file, because meaning is where a
+pattern cannot reach.
+
+**Installable as a plugin.** `.claude-plugin/` makes the repository its own
+marketplace: `/plugin install ux-wise-agent --marketplace marvinrez/ux-wise-agent`.
 
 ## What Changed in v2.2
 

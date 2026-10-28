@@ -6,7 +6,7 @@
 
 ## Before Any Method: Two Steps That Are Not Optional
 
-1. **Run the acceptance probes.** `docs/grounding-gate.md` lists twelve prompts with expected verdicts. Run them in the environment you just installed into. They take a few minutes and they tell you whether the Grounding Gate is actually active there: a system prompt that was truncated on paste, or a model that ignores the gate, fails these visibly. Re-run after any edit to `prompts/system-prompt.md` and after any model change.
+1. **Run the acceptance probes.** `docs/grounding-gate.md` lists twelve prompts with expected verdicts, and `gatecheck/probes.toml` carries those twelve plus three more as a suite you can run. Run them in the environment you just installed into. They take a few minutes and they tell you whether the Grounding Gate is actually active there: a system prompt that was truncated on paste, or a model that ignores the gate, fails these visibly. Re-run after any edit to `prompts/system-prompt.md` and after any model change.
 
 2. **Name a human owner.** One person, named where your team looks, accountable for re-running the probes, reviewing output on its way out of the team, and correcting the record when the agent is wrong. `docs/ownership.md` has the checklist and the table of which outputs can travel unreviewed. Skipping this is how a reasoning tool becomes an unattributed source in someone's roadmap.
 
