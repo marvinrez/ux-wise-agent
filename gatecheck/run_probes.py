@@ -45,6 +45,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import subprocess
 import sys
 
 try:
@@ -206,38 +207,78 @@ def audit_wording() -> tuple[list[str], list[str]]:
 # --------------------------------------------------------------------------
 
 
-def scaffold(probes: list[dict]) -> int:
+def _runlog_is_committed() -> bool:
+    """True when nothing under runlog/ is uncommitted, so a rewrite is recoverable."""
+    try:
+        out = subprocess.run(
+            ["git", "status", "--porcelain", "--", str(RUNLOG.relative_to(ROOT))],
+            cwd=ROOT, capture_output=True, text=True, check=True,
+        )
+    except (OSError, subprocess.CalledProcessError):
+        return False
+    return not out.stdout.strip()
+
+
+def _scaffold_text(p: dict) -> str:
+    asked = "\n".join(f"    {line}" for line in p["prompt"].strip().splitlines())
+    picture = (
+        f"\nSend this image with it: gatecheck/{p['image']}\n" if p.get("image") else ""
+    )
+    # The rubric goes in the file. Sending the operator to probes.toml for it,
+    # in the middle of a fifteen-probe run, is how a run gets abandoned or how a
+    # ruling gets made against a half-remembered rule.
+    rubric = (p.get("rubric") or "").strip()
+    carried = (
+        "\nRule on it against this, and nothing else:\n\n"
+        + "\n".join(f"    {line}" for line in rubric.splitlines())
+        + "\n"
+        if rubric
+        else ""
+    )
+    return (
+        "<!-- gatecheck\n"
+        f"probe: {p['id']}\n"
+        "ran_in: \n"
+        f"dated: {datetime.now(timezone.utc).date()}\n"
+        "ruling: pending\n"
+        "reviewer: \n"
+        "\n"
+        "Send this as the user turn, following any instruction inside it:\n\n"
+        f"{asked}\n"
+        f"{picture}"
+        f"{carried}"
+        "\nThen set ruling to pass or fail, put your name in reviewer, name the\n"
+        "environment you ran in under ran_in, and paste the whole answer below,\n"
+        "with nothing of your own mixed into it.\n"
+        "-->\n\n"
+    )
+
+
+def scaffold(probes: list[dict], rewrite: bool = False) -> int:
+    """Write a file per probe, ready to paste into.
+
+    `rewrite` is for the run after a prompt edit or a model change, which
+    docs/ownership.md asks for and which otherwise means deleting fifteen files
+    by hand. It refuses unless runlog/ is committed, so what it overwrites can
+    always be recovered.
+    """
     RUNLOG.mkdir(exist_ok=True)
+    if rewrite and not _runlog_is_committed():
+        _setup_failure(
+            "--rescaffold overwrites every probe file, and runlog/ has changes "
+            "that are not committed. Commit or stash them first, so what this "
+            "would replace can be recovered."
+        )
     made, kept = 0, 0
     for p in probes:
         path = RUNLOG / f"{p['id']}.md"
-        if path.exists():
+        if path.exists() and not rewrite:
             kept += 1
             continue
-        asked = "\n".join(f"    {line}" for line in p["prompt"].strip().splitlines())
-        picture = (
-            f"\nSend this image with it: gatecheck/{p['image']}\n" if p.get("image") else ""
-        )
-        path.write_text(
-            "<!-- gatecheck\n"
-            f"probe: {p['id']}\n"
-            "ran_in: \n"
-            f"dated: {datetime.now(timezone.utc).date()}\n"
-            "ruling: pending\n"
-            "reviewer: \n"
-            "\n"
-            "Send this as the user turn, following any instruction inside it:\n\n"
-            f"{asked}\n"
-            f"{picture}"
-            "\nThen read what came back against the rubric this probe carries\n"
-            f"(run with --rubrics, or open probes.toml at {p['id']}), set\n"
-            "ruling to pass or fail, put your name in reviewer, and paste the\n"
-            "whole answer below, with nothing of your own mixed into it.\n"
-            "-->\n\n",
-            encoding="utf-8",
-        )
+        path.write_text(_scaffold_text(p), encoding="utf-8")
         made += 1
-    print(f"\n  {made} file(s) written, {kept} left alone, in "
+    verb = "rewritten" if rewrite else "written"
+    print(f"\n  {made} file(s) {verb}, {kept} left alone, in "
           f"{RUNLOG.relative_to(ROOT)}\n")
     return 0
 
@@ -395,7 +436,12 @@ def write_report(rows: list[Row], setup: list[str], where: Path, show_rubrics: d
 def main() -> int:
     ap = argparse.ArgumentParser(description="Run the gatecheck probe suite.")
     ap.add_argument("--scaffold", action="store_true",
-                    help="write an empty file per probe, ready to paste into")
+                    help="write a file per probe, ready to paste into, leaving "
+                         "any that already exist alone")
+    ap.add_argument("--rescaffold", action="store_true",
+                    help="rewrite every probe file from the spec, for the run "
+                         "after a prompt edit or a model change. Refuses unless "
+                         "runlog/ is committed")
     ap.add_argument("--rubrics", action="store_true",
                     help="print what each probe asks the reviewer to decide")
     ap.add_argument("--count-answers", action="store_true",
@@ -434,9 +480,9 @@ def main() -> int:
         print(sum(1 for p in probes if read_answer(p["id"])[0] is not None))
         return 0
 
-    if args.scaffold:
+    if args.scaffold or args.rescaffold:
         try:
-            return scaffold(probes)
+            return scaffold(probes, rewrite=args.rescaffold)
         except OSError as blocked:
             _setup_failure(f"cannot write into {RUNLOG}: {blocked}")
 
