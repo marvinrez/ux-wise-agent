@@ -12,7 +12,7 @@ This document provides the core UX knowledge the agent draws from. It is not a t
 
 **Principle:** The user can tell what the system is doing, from the system, without having to guess or wait in silence.
 
-**Where it is misapplied:** Loading spinners that appear without context. Progress indicators with no connection to real progress (the bar that jumps to 90% and stalls). Status messages that describe the system's internal state rather than the user's task state ("Processing request" vs. "Saving your changes — done in a moment").
+**Where it is misapplied:** Loading spinners that appear without context. Progress indicators with no connection to real progress (the bar that jumps to 90% and stalls). Status messages that describe the system's internal state rather than the user's task state ("Processing request" vs. "Saving your changes, done in a moment").
 
 **The underlying question:** After any user action, can the user confirm that the system received it and is acting on it? If the honest answer is "no," the heuristic is being violated.
 
@@ -32,7 +32,7 @@ This document provides the core UX knowledge the agent draws from. It is not a t
 
 **Principle:** Getting out of a wrong turn costs one visible action, not a sequence the user has to complete first.
 
-**Where it is misapplied:** Multi-step flows with no back button. Confirmation dialogs that confirm destructive actions but do not offer an undo. Settings changes that take effect immediately without an obvious reset path. The absence of this heuristic is often intentional — it is where dark patterns begin.
+**Where it is misapplied:** Multi-step flows with no back button. Confirmation dialogs that confirm destructive actions but do not offer an undo. Settings changes that take effect immediately without an obvious reset path. The absence of this heuristic is often intentional. It is where dark patterns begin.
 
 **The underlying question:** What happens when the user makes the wrong choice? Can they recover without contacting support?
 
@@ -42,7 +42,7 @@ This document provides the core UX knowledge the agent draws from. It is not a t
 
 **Principle:** The same thing is named and behaves the same way in every place it appears.
 
-**Where it is misapplied:** Design systems that are maintained in Figma but diverge in code. Terminology that changes across product areas because different teams owned them at different times. Icon usage that is internally inconsistent — the same icon meaning two different things in two different contexts.
+**Where it is misapplied:** Design systems that are maintained in Figma but diverge in code. Terminology that changes across product areas because different teams owned them at different times. Icon usage that is internally inconsistent, with the same icon meaning two different things in two different contexts.
 
 **The underlying question:** If a user learned this interaction pattern in section A of the product, does it work the same way in section B?
 
@@ -64,7 +64,7 @@ This document provides the core UX knowledge the agent draws from. It is not a t
 
 **Where it is misapplied:** Command interfaces with no discoverability for new users. Keyboard shortcut-only features with no menu equivalents. Contextual actions that appear only on hover, making them invisible on touch devices. Search bars with no suggested queries or recent history for returning users.
 
-**The underlying question:** Does the user need to remember something from a previous session, a previous step, or a prior mental state in order to proceed? If yes, that is a recall requirement — consider whether the interface can surface that information instead.
+**The underlying question:** Does the user need to remember something from a previous session, a previous step, or a prior mental state in order to proceed? If yes, that is a recall requirement, so consider whether the interface can surface that information instead.
 
 ---
 
@@ -120,10 +120,10 @@ Working memory holds only a few items at once. Miller put the span near seven (p
 The time to make a decision increases logarithmically with the number of choices available, when the user knows the options and picks among them. Practical application: reducing the number of options does not always mean reducing functionality; it means reducing the decision cost. Progressive disclosure is one application of Hick's Law: fewer visible options at the start, with the ability to reveal more. It does not apply when the user is looking for an item they can already name; that is search, and it depends on labels and layout.
 
 ### Cognitive Load Theory (Sweller)
-Three types of load affect learning and task completion: intrinsic (the inherent complexity of the task), extraneous (the load added by poor design), and germane (the load used to build understanding). Good UX design reduces extraneous load — it does not make the task simpler than it is, but it does not add complexity that is not inherent to the task.
+Three types of load affect learning and task completion: intrinsic (the inherent complexity of the task), extraneous (the load added by poor design), and germane (the load used to build understanding). Good UX design reduces extraneous load. It does not make the task simpler than it is, but it does not add complexity that is not inherent to the task.
 
 ### Fogg Behavior Model
 Behavior = Motivation × Ability × Prompt. A user will take an action if they are sufficiently motivated, have the ability to do it, and receive a prompt at the right moment. Misapplication: using this model to design manipulative systems that exploit motivation without considering whether the action is in the user's interest.
 
 ### Peak-End Rule (Kahneman)
-Users judge an experience based primarily on how they felt at the most intense point and at the end — not on the average of all moments. Practical application: invest disproportionately in the experience at key moments (error recovery, task completion, first success) rather than optimizing every screen equally.
+Users judge an experience based primarily on how they felt at the most intense point and at the end, not on the average of all moments. Practical application: invest disproportionately in the experience at key moments (error recovery, task completion, first success) rather than optimizing every screen equally.

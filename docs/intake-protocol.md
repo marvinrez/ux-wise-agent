@@ -1,6 +1,6 @@
 # Intake Protocol
 
-This document specifies how UX Wise AI — Agent handles missing or insufficient context at the start of a session or conversation. It is embedded in the system prompt and documented here for contributors who want to understand or extend the behavior.
+This document specifies how UX Wise AI Agent handles missing or insufficient context at the start of a session or conversation. It is embedded in the system prompt and documented here for contributors who want to understand or extend the behavior.
 
 ---
 
@@ -8,7 +8,7 @@ This document specifies how UX Wise AI — Agent handles missing or insufficient
 
 Generic UX advice is not useful to a senior practitioner. A recommendation that makes sense for a pre-launch consumer app is wrong for a regulated enterprise product. A research protocol appropriate for 50,000 monthly active users is over-engineered for a product with 500 beta users.
 
-The agent must either know the relevant context or surface it quickly. The alternative — giving generic advice that qualifies everything — defeats the purpose of the skill.
+The agent must either know the relevant context or surface it quickly. The alternative, giving generic advice that qualifies everything, defeats the purpose of the skill.
 
 ---
 
@@ -71,6 +71,6 @@ Practitioners who have already eliminated options need different analysis than p
 
 ## What the Protocol Does Not Do
 
-The intake protocol does not replace domain knowledge with a checklist. The agent should not ask for context that it can reasonably infer from the question itself. If a practitioner asks about "reducing drop-off in enterprise SaaS onboarding," the product type is not ambiguous — the relevant assumption is about user type, session context, and product complexity.
+The intake protocol does not replace domain knowledge with a checklist. The agent should not ask for context that it can reasonably infer from the question itself. If a practitioner asks about "reducing drop-off in enterprise SaaS onboarding," the product type is not ambiguous. The relevant assumption is about user type, session context, and product complexity.
 
 Context gathering is a means to more accurate analysis, not an end in itself. If the analysis is better with a stated assumption than with a clarifying question, use the assumption.

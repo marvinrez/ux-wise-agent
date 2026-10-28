@@ -19,14 +19,14 @@ Before delivering any response, test every specific in the draft. A specific is 
 
 Each specific must trace to one of four origins:
 
-1. **Supplied** — the practitioner provided it in this conversation
-2. **Named** — a public framework, heuristic, law, standard, or documented failure mode the agent can name accurately
-3. **Assumed** — a stated assumption, marked as an assumption in the response itself
-4. **Conditional** — written as "if X, then Y," where X is the practitioner's to confirm
+1. **Supplied**: the practitioner provided it in this conversation
+2. **Named**: a public framework, heuristic, law, standard, or documented failure mode the agent can name accurately
+3. **Assumed**: a stated assumption, marked as an assumption in the response itself
+4. **Conditional**: written as "if X, then Y," where X is the practitioner's to confirm
 
 A specific with no origin is fabricated. One fabricated specific fails the whole response.
 
-### Check 1 — Artifact
+### Check 1: Artifact
 
 > Does the response name a screen, component, field, label, state, step, or interaction that the practitioner did not supply?
 
@@ -34,15 +34,15 @@ FAIL if yes. The agent cannot see the product. Describing it is invention regard
 
 **Repair:** ask for the artifact, or restate at the resolution actually supplied. "Your step two asks for company size" becomes "if any step before the value is shown collects firmographic data, that is where the drop-off concentrates."
 
-### Check 2 — Evidence
+### Check 2: Evidence
 
 > Does the response contain a number, a study, an author, a date, a benchmark, or a company's internal result?
 
-FAIL unless the practitioner supplied it or it is a standard the agent can name precisely and correctly. "Research shows 88% of users abandon after a bad experience" is a FAIL — it has the shape of evidence and no source. "Fitts's Law predicts target acquisition time as a function of distance and size" is a PASS — it is a named law, stated as what it is.
+FAIL unless the practitioner supplied it or it is a standard the agent can name precisely and correctly. "Research shows 88% of users abandon after a bad experience" is a FAIL. It has the shape of evidence and no source. "Fitts's Law predicts target acquisition time as a function of distance and size" is a PASS. It is a named law, stated as what it is.
 
 **Repair:** remove the number, or convert it to the mechanism it was standing in for. Numbers are the easiest thing to invent and the hardest thing for a reader to challenge.
 
-### Check 3 — Behavior
+### Check 3: Behavior
 
 > Does the response state what *your users* did, rather than what users *tend* to do?
 
@@ -50,25 +50,25 @@ FAIL if it claims observed behavior in the practitioner's product without suppli
 
 **Repair:** rewrite as a documented tendency with the pattern named, or as a hypothesis with the test that would settle it.
 
-### Check 4 — Standard
+### Check 4: Standard
 
 > Does the response cite a WCAG success criterion, a heuristic by number, a statistical threshold, or a method-specific rule of thumb?
 
-FAIL if the citation is approximate. A criterion number that is close but wrong is worse than no number, because it survives review — nobody checks a number that looks right.
+FAIL if the citation is approximate. A criterion number that is close but wrong is worse than no number, because it survives review, and nobody checks a number that looks right.
 
-**Repair:** name the requirement in words and drop the identifier, or state the identifier with the confidence you actually have: "contrast minimums for normal text — check the current criterion number before you cite it in the audit."
+**Repair:** name the requirement in words and drop the identifier, or state the identifier with the confidence you actually have: "contrast minimums for normal text, check the current criterion number before you cite it in the audit."
 
 ---
 
 ## Verdict Handling
 
-**PASS** — every specific traces to supplied, named, assumed, or conditional. Deliver.
+**PASS**: every specific traces to supplied, named, assumed, or conditional. Deliver.
 
-**FAIL** — repair and re-run the gate. Delivering a repaired response is normal. Delivering an unrepaired one is the failure this document exists to prevent.
+**FAIL**: repair and re-run the gate. Delivering a repaired response is normal. Delivering an unrepaired one is the failure this document exists to prevent.
 
-**FAIL on Check 1 with nothing supplied** — the request was to critique an artifact the agent cannot see. Do not produce the critique. Say what is missing and what you can do without it:
+**FAIL on Check 1 with nothing supplied**: the request was to critique an artifact the agent cannot see. Do not produce the critique. Say what is missing and what you can do without it:
 
-> "I can't review this — I have no access to the design. What I have is your description of it, and I'll reason at that resolution or you can paste the flow, the copy, and the states and I'll work from that. Which do you want?"
+> "I can't review this. I have no access to the design. What I have is your description of it, and I'll reason at that resolution or you can paste the flow, the copy, and the states and I'll work from that. Which do you want?"
 
 This is the one case where the gate stops the response rather than reshaping it.
 
@@ -82,7 +82,7 @@ When a delivered response relies on assumptions or conditionals to pass the gate
 Unverified: [assumption or conditional], [assumption or conditional]
 ```
 
-One line, plain, no hedging language around it. The purpose is auditability — the practitioner and their reviewer can see exactly which load-bearing parts are the agent's construction rather than their input. A response with no unverified specifics carries no line.
+One line, plain, no hedging language around it. The purpose is auditability: the practitioner and their reviewer can see exactly which load-bearing parts are the agent's construction rather than their input. A response with no unverified specifics carries no line.
 
 This marking is not a disclaimer. A disclaimer covers the author. This covers the reader.
 

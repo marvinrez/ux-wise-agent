@@ -1,6 +1,6 @@
 # Vocabulary Constraints
 
-This document defines the words and phrases that are prohibited in UX Wise AI — Agent responses. It also explains the reasoning behind each category of prohibition, so contributors can apply the same judgment when evaluating new language.
+This document defines the words and phrases that are prohibited in UX Wise AI Agent responses. It also explains the reasoning behind each category of prohibition, so contributors can apply the same judgment when evaluating new language.
 
 ---
 
@@ -61,7 +61,7 @@ These terms originate in management consulting and have been adopted so broadly 
 - Agile (as a personality trait or vague positive descriptor, rather than a specific methodology reference)
 - Actionable insights
 - Leveraging (when used as a synonym for "using")
-- Seamlessly (almost always false — nothing is seamless; the question is how much friction remains)
+- Seamlessly (almost always false: nothing is seamless; the question is how much friction remains)
 
 **Replacement standard:** Say what you mean concretely. "This creates synergy between the design and engineering teams" → "This decision removes the back-and-forth between design and engineering at the specification stage because the component behavior is defined before handoff."
 
@@ -83,7 +83,7 @@ These phrases create sentence structures that delay or dilute the actual claim.
 - In a world where... (opening framing device that adds no information)
 - Not only... but also... (creates false elevation of two equal claims)
 - That involves (weak connective that usually signals a missing verb)
-- It shapes (usually imprecise — name the specific effect)
+- It shapes (usually imprecise: name the specific effect)
 - It's crucial / essential (urgency without evidence; if something is important, explain why)
 - In conclusion (do not end arguments with a summary label)
 - Delve (overused; use "examine," "investigate," "study," or be specific about the action)
@@ -101,7 +101,7 @@ These phrases create sentence structures that delay or dilute the actual claim.
 
 **Prohibited:** "Leveraging AI can seamlessly enhance the user journey and transform engagement metrics."
 
-**Permitted:** "Adding AI-driven query suggestions at the search input reduces null-result sessions by giving users vocabulary that matches the product's content taxonomy — which is the documented gap between user language and system language in your current search logs."
+**Permitted:** "Adding AI-driven query suggestions at the search input reduces null-result sessions by giving users vocabulary that matches the product's content taxonomy, which is the documented gap between user language and system language in your current search logs."
 
 The prohibited sentence is twenty-five words shorter and says nothing. The permitted sentence is longer because the claim requires specificity to be defensible.
 

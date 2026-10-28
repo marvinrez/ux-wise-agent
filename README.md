@@ -52,7 +52,7 @@ One recommendation. No hedging. The reasoning is present but compressed. Use thi
 
 ### Provocative Mode
 
-Adversarial reasoning. Argues against your assumptions to expose where your logic breaks. Use this before finalizing any decision you feel confident about — confidence without interrogation is a design liability.
+Adversarial reasoning. Argues against your assumptions to expose where your logic breaks. Use this before finalizing any decision you feel confident about. Confidence without interrogation is a design liability.
 
 ### Research Mode *(new in v2.0)*
 
@@ -70,15 +70,15 @@ Do not use it to:
 
 | Request | Why it is out of reach |
 |---|---|
-| Invent an interface — wireframes, specs, component structures, mockups, production copy | An invented interface carries invented specifics, and fluent prose makes those indistinguishable from real ones |
+| Invent an interface: wireframes, specs, component structures, mockups, production copy | An invented interface carries invented specifics, and fluent prose makes those indistinguishable from real ones |
 | Critique a design that has not been supplied | No image, no DOM, no Figma file, no recording. It declines rather than reconstructing |
-| Supply facts about your product — conversion rates, drop-off, ticket volumes, quotes, test results | Yours to provide. It can reason about what a number means, not produce one |
+| Supply facts about your product: conversion rates, drop-off, ticket volumes, quotes, test results | Yours to provide. It can reason about what a number means, not produce one |
 | Produce citations as evidence | A specific study with a specific author and a specific percentage is the exact shape fabrication takes in this domain |
 | Declare accessibility conformance | It reasons about which criteria apply; conformance is established by testing the built artifact, with assistive technology, by a person |
 | Stand in for users | A synthetic usability finding is a hypothesis with the grammar of a result |
 | Settle a decision whose real variable is organizational | It will produce a confident position anyway. Confidence is not jurisdiction |
 
-Borderline cases — "redesign this," "write the empty state copy," "what do users expect here" — are worked through in [`docs/boundaries.md`](docs/boundaries.md).
+Borderline cases ("redesign this," "write the empty state copy," "what do users expect here") are worked through in [`docs/boundaries.md`](docs/boundaries.md).
 
 ---
 
@@ -86,7 +86,7 @@ Borderline cases — "redesign this," "write the empty state copy," "what do use
 
 The skill is built to sound certain. That is its function and its main hazard: a hedging agent that invents a detail gets caught, a confident one gets believed.
 
-Before delivering a response, the agent tests every **specific** in its draft — anything a reader could act on that is not a general principle. Each must trace to one of four origins: **supplied** by you, **named** as a public framework or standard, **assumed** and marked as such, or **conditional** ("if X, then Y"). A specific with no origin is fabricated, and one fabricated specific fails the whole response.
+Before delivering a response, the agent tests every **specific** in its draft, meaning anything a reader could act on that is not a general principle. Each must trace to one of four origins: **supplied** by you, **named** as a public framework or standard, **assumed** and marked as such, or **conditional** ("if X, then Y"). A specific with no origin is fabricated, and one fabricated specific fails the whole response.
 
 | Check | FAIL condition |
 |---|---|
@@ -95,7 +95,7 @@ Before delivering a response, the agent tests every **specific** in its draft �
 | Behavior | States what *your* users did rather than what users *tend* to do |
 | Standard | Cites a WCAG criterion, heuristic number, or statistical threshold approximately |
 
-On FAIL, the response is repaired and re-run: ask for what is missing, restate at the resolution actually supplied, or convert the invented specific into a stated assumption. On FAIL at the Artifact check with nothing supplied, the response stops — the agent says what it needs instead of producing the critique.
+On FAIL, the response is repaired and re-run: ask for what is missing, restate at the resolution actually supplied, or convert the invented specific into a stated assumption. On FAIL at the Artifact check with nothing supplied, the response stops, and the agent says what it needs instead of producing the critique.
 
 Responses that pass on assumptions or conditionals carry them visibly, on one plain line:
 
@@ -184,11 +184,11 @@ and no secret, because nothing in `gatecheck/` calls a model.
 
 **Before you install: name an owner.**
 
-The install takes two minutes. The failure mode does not. This skill produces senior-sounding analysis at volume, some of it will be wrong, and a fraction of the wrong part will be fabricated rather than merely mistaken. Neither the model nor this repository can be held to that — a person has to be.
+The install takes two minutes. The failure mode does not. This skill produces senior-sounding analysis at volume, some of it will be wrong, and a fraction of the wrong part will be fabricated rather than merely mistaken. Neither the model nor this repository can be held to that. A person has to be.
 
 Before the skill's output informs anything beyond your own desk, name one human owner, in writing, where your team actually looks. Their accountability is small and specific: they ran the acceptance probes, they re-run them after any system prompt edit or model change, output that leaves the team passed under their eye first, and when the agent is wrong in a way that reached someone, they correct it. Not the tool. Them.
 
-Working alone? You are the owner by default, and the probes are how you find out what you are working with. Full checklist and the review table — which outputs can travel unreviewed and which cannot — in [`docs/ownership.md`](docs/ownership.md).
+Working alone? You are the owner by default, and the probes are how you find out what you are working with. Full checklist and the review table (which outputs can travel unreviewed and which cannot) in [`docs/ownership.md`](docs/ownership.md).
 
 **Which path.** Installing as a plugin if you work in Claude Code, because the
 skill then activates on its own description and the files travel with it. Paste
@@ -296,6 +296,6 @@ MIT License. Free to use, modify, and distribute. Attribution to UX Wise AI is a
 
 ## Author
 
-Marcos Rezende — Senior Product Designer, AI/UX Systems
+Marcos Rezende, Senior Product Designer, AI/UX Systems
 [marcosrezende.com](https://marcosrezende.com)
 

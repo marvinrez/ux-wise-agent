@@ -1,4 +1,4 @@
-# Ownership — Who Is Accountable for What This Skill Produces
+# Ownership: Who Is Accountable for What This Skill Produces
 
 Installing this skill takes two minutes. Deciding who answers for its output takes longer, and skipping that step is how a reasoning tool becomes an unattributed source in someone's roadmap.
 
@@ -14,7 +14,7 @@ One person. Named in the project, the Slack channel topic, the Confluence page, 
 
 1. They ran the acceptance probes, all fifteen of them, in the environment where the skill is installed, and the probes behaved as specified.
 2. They re-run those probes after any edit to `prompts/system-prompt.md` or after a model change in the deployment. `python gatecheck/run_probes.py --rescaffold` clears the fifteen files back to prompts and rubrics for that run, and refuses unless `gatecheck/runlog/` is committed, so the previous run stays recoverable.
-3. Any output from this skill that leaves the team — into a deck, a spec, a research plan, a stakeholder email, a ticket — passed under their eye first, or carries an explicit mark that it did not.
+3. Any output from this skill that leaves the team, into a deck, a spec, a research plan, a stakeholder email or a ticket, passed under their eye first, or carries an explicit mark that it did not.
 4. When the agent is wrong in a way that reached someone, they say so and correct it. Not the tool. Them.
 
 The owner does not need to be the most senior person. They need to be a practitioner who can tell a grounded claim from a fluent one in this domain, which is a different qualification from seniority and occasionally the opposite of it.
@@ -48,7 +48,7 @@ Not a two-minute install. A two-minute install plus a decision.
 - [ ] Skill installed by one of the methods in `integrations/claude-skill.md`
 - [ ] Acceptance probes run in that environment, all fifteen behaving as specified. `python gatecheck/run_probes.py --scaffold` writes one file per probe to paste into, and `python gatecheck/run_probes.py` applies the deterministic checks and reports what is still waiting on your ruling
 - [ ] Human owner named, in writing, somewhere the team reads
-- [ ] Team told what the skill does not do — see the "Do Not Use This Skill For" list in `docs/boundaries.md`
+- [ ] Team told what the skill does not do: see the "Do Not Use This Skill For" list in `docs/boundaries.md`
 - [ ] Review expectation agreed for the output classes in the table above
 - [ ] Re-probe scheduled against model upgrades and system prompt edits
 
