@@ -132,6 +132,22 @@ The information the choice depends on arrives after the choice.
   taxes, joining fees) must sit in the headline price rather than appear later
   in the transaction.
 
+**Intermediate currency**
+- What it does: money is converted into a token, gem, credit or point before it
+  is spent, so every price the user then reads is quoted in a unit they have no
+  practice valuing. Pack sizes and item prices that do not divide evenly leave a
+  balance behind, and the balance is easier to spend than to value.
+- To claim it you need: the purchase flow showing both the money price of a pack
+  and the token price of what it buys, or a written description of the rates.
+- Not this when: the currency serves something outside pricing, a balance that
+  crosses regions or a gift credit among them, and the money equivalent is shown
+  where the user spends it.
+- Floor: yes, where the money price of the thing being bought is not available
+  at the point of purchase.
+- Named in: Brignull's taxonomy. The placement in this group is derived here:
+  the mechanism is a change of unit rather than a delay, and what the decision
+  depends on, the price in money, is still missing when the decision is made.
+
 **Buried material terms**
 - What it does: the term that would change the decision (the renewal, the
   minimum term, the data sharing) sits where attention will not be. Selective
@@ -203,6 +219,18 @@ The control is understood, and understood wrongly.
   whether anyone benefits from the misreading.
 - Named in: Gray et al., *Interface Interference*.
 
+**Bait and switch**
+- What it does: the control is operated for the outcome it announces and
+  produces a different one. The user's model of the interface was correct a
+  moment earlier, and the interface moved under it.
+- To claim it you need: the announced outcome and the actual one, from the copy
+  or the flow, and a before and after of the control where it changed.
+- Not this when: the outcome is the announced one and the user is disappointed
+  by it, or the change was published where the user would meet it before acting.
+- Floor: yes.
+- Named in: Brignull's taxonomy, and among the thirteen named in India's 2023
+  guidelines.
+
 ---
 
 ## 3. The weighted path
@@ -263,6 +291,35 @@ Both options are there. One is engineered to be the one taken.
 - Law: Article 22 of the Consumer Rights Directive requires express consent to
   any payment beyond the agreed price of the main contract, before the consumer
   is bound.
+
+**Comparison prevention**
+- What it does: every option is present and none can be set beside another. The
+  units differ between plans, the feature lists are not aligned, one option is
+  priced per unit and the next as a total, or the comparison view leaves out the
+  row the decision turns on.
+- To claim it you need: the pricing or feature presentation of at least two
+  options as the user meets them.
+- Not this when: the options genuinely differ in shape and the interface gives
+  the user a way to normalise them, or there is a single option and nothing to
+  compare.
+- Floor: yes, where a common unit exists and is not the one used.
+- Named in: Brignull's taxonomy; within *Obstruction* in Gray et al. (CHI 2018).
+
+**Forced action**
+- What it does: a step with no bearing on the task is attached to it, so the
+  user's two paths are accepting the step and abandoning the goal. An account to
+  see a price, an app to read a page, marketing agreed to in order to download.
+- To claim it you need: the blocking step and what it demands, together with
+  what the user came to do.
+- Not this when: the step is needed to deliver the thing, an address for a
+  delivery or identity for a regulated purchase among them. Where what is
+  demanded is consent, the entry is **Bundled consent** in group 7 and the legal
+  test there is the one that governs.
+- Floor: yes.
+- Named in: Gray et al. (CHI 2018), as one of their five types; Brignull's
+  taxonomy; among the thirteen named in India's 2023 guidelines.
+- Law: in the EU, where what is demanded is consent, GDPR Article 7(4) on
+  consent conditional to performance.
 
 ---
 
@@ -661,9 +718,21 @@ Three things follow, and they hold in every market.
   Directives 2019/2161 and 2024/825, on a presentation that deceives or is
   likely to deceive the average consumer even where the information is factually
   correct, where the deception reaches a transactional decision.
-- **Platforms.** The Digital Services Act Article 25, with its carve-out for the
-  Unfair Commercial Practices Directive and the GDPR, and the obligations
-  specific to minors, named in words here.
+- **Platforms.** The Digital Services Act. Article 25(1) forbids providers of
+  online platforms to design, organise or operate an interface in a way that
+  deceives or manipulates recipients of the service, or that otherwise
+  materially distorts or impairs their ability to make free and informed
+  decisions. Article 25(2) carves out practices already covered by Directive
+  2005/29/EC or the GDPR, so this prohibition is residual and the instrument to
+  cite is often one of those instead. Article 25(3) is a power for the
+  Commission to issue guidelines rather than a second prohibition, and it names
+  three practices: giving more prominence to certain choices, repeatedly asking
+  for a choice already made, and, at point (c), making the procedure for
+  terminating a service more difficult than subscribing to it. Recital 67 is
+  where the Regulation uses the term and describes the conduct at length,
+  reaching default settings that are very difficult to change and choices made
+  more time-consuming than others. The obligations specific to minors are
+  Article 28, not Article 25.
 
 ### United Kingdom
 
@@ -719,6 +788,22 @@ administrative monetary penalties are among the heaviest in this file, reaching
 CAD 10 million for a corporation's first civil violation and CAD 15 million
 after that, or three times the benefit obtained, whichever is greater.
 
+Quebec has its own instrument, and section 9.1 of the Act respecting the
+protection of personal information in the private sector is the most specific
+default rule in this file. An enterprise that collects personal information when
+offering the public a technological product or service having privacy settings
+must ensure those settings provide the highest level of confidentiality by
+default, without any intervention by the person concerned. Browser cookies are
+excluded by the section's second paragraph. Section 14 requires consent to be
+clear, free and informed, requested for each purpose in clear and simple
+language, and, where the request is written, presented separately from any other
+information; consent not given that way is without effect. The ceilings are
+high: a monetary administrative penalty under section 90.12 reaches CAD 10
+million or two per cent of worldwide turnover, whichever is greater, and a penal
+fine under section 91 reaches CAD 25 million or four per cent. Whether a
+settings breach is itself reached by the list of failures at section 90.1 is not
+spelled out there, so name the requirement rather than the figure.
+
 ### Brazil
 
 Three instruments reach the conduct. Two predate the term and reach it by
@@ -731,6 +816,17 @@ words the rest of this file uses, and has been in force since March 2026.
   one on demanding a manifestly excessive advantage. The Code's right of
   withdrawal for distance purchases is the provision a subscription trap runs
   into first.
+- Decree 7.962/2013, which regulates the Code for electronic commerce and is the
+  most specific text in this market. Article 2, item IV requires any additional
+  or accessory charge, delivery and insurance among them, to be itemised in the
+  price. Article 4, item I requires a summary of the contract before contracting
+  with the clauses that limit rights emphasised, item II tools to identify and
+  correct errors made at the earlier steps, and item V an electronic service
+  channel through which the consumer can resolve suspension or cancellation.
+  Article 5, first paragraph lets the consumer withdraw through the same tool
+  used to contract, which is the rule the Digital Services Act arrived at nine
+  years later in Article 25(3)(c). Breach triggers the Code's administrative
+  sanctions through Article 7. In force sixty days after 15 March 2013.
 - The LGPD (Lei 13.709/2018), which requires consent that is free, informed and
   unequivocal, so consent assembled from a default the user had to find and
   reject does not meet the standard. The ANPD has addressed cookie banners
@@ -791,6 +887,15 @@ The category count and the dates above are reliable; the specific article
 numbers and penalty figures in circulation are not consistent across sources, so
 name the requirement in words unless you have read the statute.
 
+The data protection side is the Personal Information Protection Act, which the
+e-commerce act does not displace, and it bars consent bundled across purposes: a
+controller must present each matter requiring consent distinctly and obtain
+consent for each separately, and the Enforcement Decree adds that the data
+subject be able to decide freely and the wording be easy to read. The provision
+usually cited is Article 22, on methods of obtaining consent. That number and
+its wording were read here from an unofficial translation rather than from the
+statute, so the caution above applies to them too.
+
 ### Australia
 
 Not yet in force, and listed for that reason. The Competition and Consumer
@@ -805,11 +910,24 @@ it as a requirement.
 
 ### China
 
-Named in words, because the article-level text was not verified when this was
-written. The Personal Information Protection Law has governed consent since
-2021, and the Consumer Protection Law does not single out deceptive design.
-Treat this market as one where the mechanism is nameable and the instrument is
-not, from this file.
+The E-commerce Law has carried a default-option rule since 2019, and it is more
+specific than this file recorded before. Article 19 requires an operator that
+bundles goods or services to draw the consumer's attention in a conspicuous
+manner, and forbids making the bundled item a default-agreed option. Article 18,
+first paragraph, requires an operator that returns search results based on a
+consumer's interests or habits to offer at the same time an option not directed
+at that consumer's personal characteristics. Article 21 requires the method and
+procedure for refunding a deposit to be stated, forbids unreasonable conditions
+on the refund, and requires a prompt refund once the stated conditions are met.
+
+Article 77 sets the penalty for Article 18, first paragraph and for Article 19:
+correction within a time limit, confiscation of unlawful gains, and a fine of
+RMB 50,000 to 200,000, rising to RMB 200,000 to 500,000 where the case is
+serious. Article 78 does the same for Article 21. The Personal Information
+Protection Law has governed consent since 2021 and the Consumer Protection Law
+does not single out deceptive design, so for conduct outside those three
+articles this remains a market where the mechanism is nameable from here and the
+instrument is not.
 
 ### Anywhere else
 
