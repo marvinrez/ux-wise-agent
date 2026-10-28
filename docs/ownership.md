@@ -13,7 +13,7 @@ This document exists because the install instructions are frictionless and the f
 One person. Named in the project, the Slack channel topic, the Confluence page, or wherever the team actually looks. Their accountability is specific and small:
 
 1. They ran the acceptance probes, all fifteen of them, in the environment where the skill is installed, and the probes behaved as specified.
-2. They re-run those probes after any edit to `prompts/system-prompt.md` or after a model change in the deployment.
+2. They re-run those probes after any edit to `prompts/system-prompt.md` or after a model change in the deployment. `python gatecheck/run_probes.py --rescaffold` clears the fifteen files back to prompts and rubrics for that run, and refuses unless `gatecheck/runlog/` is committed, so the previous run stays recoverable.
 3. Any output from this skill that leaves the team — into a deck, a spec, a research plan, a stakeholder email, a ticket — passed under their eye first, or carries an explicit mark that it did not.
 4. When the agent is wrong in a way that reached someone, they say so and correct it. Not the tool. Them.
 

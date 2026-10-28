@@ -55,6 +55,15 @@ def _green(repo: Path) -> None:
     )
 
 
+def _commit_the_copy(repo: Path) -> None:
+    """Give the copy a git history, so --rescaffold can confirm recoverability."""
+    env = {**os.environ, "GIT_AUTHOR_NAME": "t", "GIT_AUTHOR_EMAIL": "t@t",
+           "GIT_COMMITTER_NAME": "t", "GIT_COMMITTER_EMAIL": "t@t"}
+    for args in (["init", "-q"], ["add", "-A"], ["commit", "-qm", "copy"]):
+        subprocess.run(["git", *args], cwd=repo, env=env,
+                       capture_output=True, check=True)
+
+
 def run(repo: Path, *flags: str) -> int:
     out = subprocess.run(
         [PY, str(repo / "gatecheck/run_probes.py"), *flags],
@@ -71,6 +80,7 @@ CASES: list[tuple[str, object, tuple[str, ...], int]] = [
     ("--count-answers", lambda r: None, ("--count-answers",), 0),
     ("--rubrics on a green run", _green, ("--rubrics",), 0),
     ("--scaffold", lambda r: None, ("--scaffold",), 0),
+    ("--rescaffold on a committed runlog", _commit_the_copy, ("--rescaffold",), 0),
 ]
 
 
@@ -182,6 +192,11 @@ def _setup_cases() -> list[tuple[str, object, tuple[str, ...], int]]:
         shutil.rmtree(r / "gatecheck/runlog")
         _write(r, "gatecheck/runlog", "not a directory\n")
 
+    def no_git(r: Path) -> None:
+        # The copies carry no .git, so --rescaffold cannot confirm that what it
+        # would overwrite is recoverable, and refusing is the whole point.
+        pass
+
     return [
         ("malformed TOML", malformed, (), 2),
         ("spec deleted", no_spec, (), 2),
@@ -204,6 +219,8 @@ def _setup_cases() -> list[tuple[str, object, tuple[str, ...], int]]:
         ("checks.py is missing", checks_gone, (), 2),
         ("--out cannot be written", _green, ("--out", "/nonexistent-dir-xyz/r.json"), 2),
         ("--scaffold cannot write", scaffold_blocked, ("--scaffold",), 2),
+        ("--rescaffold with no git to vouch for the runlog", no_git,
+         ("--rescaffold",), 2),
     ]
 
 
