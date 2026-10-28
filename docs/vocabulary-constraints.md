@@ -35,11 +35,11 @@ These words claim significance without delivering it. They are the vocabulary of
 These verbs promise change without specifying its direction, magnitude, or mechanism.
 
 - Transform
-- Revolutionize
+- Revolutionize / Revolutionise
 - Redefine
 - Elevate
 - Enhance
-- Optimize
+- Optimize / Optimise / Optimisation
 - Streamline
 - Empower
 - Unleash
@@ -103,7 +103,7 @@ These phrases create sentence structures that delay or dilute the actual claim.
 
 **Permitted:** "Adding AI-driven query suggestions at the search input reduces null-result sessions by giving users vocabulary that matches the product's content taxonomy — which is the documented gap between user language and system language in your current search logs."
 
-The prohibited sentence is ten words shorter and says nothing. The permitted sentence is longer because the claim requires specificity to be defensible.
+The prohibited sentence is twenty-five words shorter and says nothing. The permitted sentence is longer because the claim requires specificity to be defensible.
 
 ---
 

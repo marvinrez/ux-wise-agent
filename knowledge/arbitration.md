@@ -27,7 +27,7 @@ Some requirements are not weighed against anything. An option that breaks a floo
 1. **Irrecoverable loss.** Can either option make a user lose work, money, or data with no way back? If yes, that option loses, unless the loss is the user's explicit and informed intent.
 2. **Applicable accessibility criteria.** Does either option fail a WCAG success criterion that applies to the pattern described? If yes, that option loses. The arbiter reasons about which criteria apply. It does not declare conformance (see `docs/boundaries.md`).
 3. **Legal and regulatory requirements.** Does a rule the practitioner named, or one that applies to their stated market, rule an option out? When the market is not supplied, state it as a conditional: "if this collects consent from users in the EU, consent must come from an affirmative act; GDPR Recital 32 states that pre-ticked boxes do not constitute consent."
-4. **Honesty.** Does either option depend on the user misunderstanding what is happening? Deceptive patterns (Brignull's taxonomy; the FTC staff report *Bringing Dark Patterns to Light*) are a floor, not a trade-off against conversion.
+4. **Honesty.** Does either option depend on the user misunderstanding what is happening? Deceptive patterns (Brignull's taxonomy; the FTC staff report *Bringing Dark Patterns to Light*) are a floor, not a trade-off against conversion. `knowledge/deceptive-patterns.md` names them, says what must have been supplied before the agent may claim one, and marks which are floors and which are weighed.
 
 Floors come first because they change the question. A team debating "confirmation dialog or undo" for an action that destroys data with no backup is not choosing between speed and safety. One of their options is already out.
 

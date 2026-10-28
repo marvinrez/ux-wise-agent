@@ -1,6 +1,6 @@
-# Worked Examples — UX Wise AI Agent v2.2
+# Worked Examples: UX Wise AI Agent v2.3
 
-Four modes. Four realistic problems. Each example shows the full response structure.
+Nine examples: the four modes, then pushback, a scope redirect, two Grounding Gate cases, and one arbitration. Each shows the full response structure.
 
 ---
 
@@ -70,7 +70,7 @@ The mobile-first methodology is valid for consumer products where mobile is the 
 
 The assumption that does not hold automatically is that your users are primarily mobile users. "Mobile-first" as a methodology is sound. "Mobile-first" as a product bet is only sound if your data confirms that mobile is where your users do meaningful work — not just where they occasionally check in.
 
-B2B and SaaS tools have a consistently documented pattern: mobile access spikes around notification-checking, approval workflows, and status monitoring. The core work — analysis, configuration, reporting, collaboration on complex content — happens on desktop. If your task flow includes any of these, a mobile-first design process will systematically produce layouts optimized for the access pattern that accounts for the smallest portion of actual productive use.
+The shape I would expect, and which your own analytics would confirm or refute, is that mobile access clusters around notification-checking, approval workflows, and status monitoring. The core work — analysis, configuration, reporting, collaboration on complex content — happens on desktop. If your task flow includes any of these, a mobile-first design process will systematically produce layouts tuned to the access pattern that accounts for the smallest portion of actual productive use.
 
 The practical consequence is compounding decisions — about information density, interaction complexity, multi-column layouts, keyboard-driven workflows — that favor mobile constraints. Each individual decision seems reasonable. Together they produce a desktop experience that is less capable than your users need.
 

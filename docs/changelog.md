@@ -2,7 +2,118 @@
 
 ---
 
-## v2.2.0 (Current Release)
+## v2.3.0 (Current Release)
+
+**Release date:** 2026
+
+Two things the repository asserted but could not act on: the honesty floor named
+a taxonomy it did not carry, and the acceptance probes were a checklist nobody
+could run twice.
+
+**New: Deceptive patterns (`knowledge/deceptive-patterns.md`)**
+Step 0 of the arbitration rules makes honesty a floor and points at Brignull's
+taxonomy, which the repository did not hold. An agent cannot refuse a pattern it
+cannot name. The catalogue is organised by what the user is prevented from
+knowing or doing rather than by surface, and every entry carries the evidence
+that must have been supplied before the agent may claim it, on the same rule
+that governs states: a pattern is a claim about an artifact. No entry carries a
+severity, because `knowledge/severity.md` rates for the people affected and
+forbids one score for a screen; entries mark whether they break the floor, and
+severity factors are written as questions. A section on what is *not* a
+deceptive pattern comes before the patterns, since naming a false one costs the
+standing to name a real one. The catalogue is short on purpose:
+an entry has to carry a nameable source and a supplied-evidence test, and one
+that cannot is one the agent could only use by fabricating.
+
+Where an entry rests on law, it names the instrument and the jurisdiction it
+belongs to, since a requirement cited into the wrong market fails quietly. The
+`Markets` section is grouped that way, one subsection per jurisdiction, and the
+`Where the names come from` section lists the literature the pattern names are
+taken from. Where an instrument moves, the entry
+says so. Six are flagged, and the file tells the reader to check each before
+citing it. The Standard check holds that an identifier which is close and wrong is
+worse than none, because it survives review; one that was right last year is the
+same failure on a delay. The file also states what it is not: whether a pattern
+is unlawful depends on where the product operates, which is the practitioner's to
+establish and a lawyer's to answer. That it is a design problem does not.
+
+**New: the markets the catalogue covers, and the rule that comes before them**
+A requirement is not a property of a pattern. It is a property of a pattern in a
+place, so the market is a supplied fact like any other and the agent asks for it
+before naming any instrument. "This is unlawful" with no market named is worse
+than the failure the Standard check usually catches: not an identifier that is
+close and wrong, but a correct identifier pointed at the wrong country.
+
+Ten sections name a market: the EU, the UK, US federal, the US states, Canada,
+Brazil, India, South Korea, Australia and China. Two more carry no market, one
+saying plainly that most of the world is not among them and one on currency. India's is the most specific instrument in the file and the only
+one that enumerates named patterns. Brazil has no statute that names the conduct,
+which is stated as the thing to understand rather than a gap, and the Consumer
+Defence Code articles are named in words because that numbering is where a
+confident citation goes wrong. Australia is listed because its regime does not
+commence until 2027, and China because the mechanism is nameable there and the
+article text was not verified. The section on everywhere else is the longest
+honest answer in the file: most of the world is not in the list, and in those
+markets the agent names the mechanism and stops.
+
+Six instruments are flagged as moving. `legal_claim_names_market` reads
+the rule as a check, at warn level rather than failing a probe, because it has
+never met an answer written by someone who had not read it.
+
+**Changed: system prompt, arbitration, SKILL.md, README, and seven more**
+Also `docs/contribution-guide.md`, `docs/grounding-gate.md`, `docs/ownership.md`,
+`docs/vocabulary-constraints.md`, `examples/worked-examples.md`,
+`integrations/claude-skill.md` and `integrations/custom-gpt.md`.
+The system prompt carries a compact version, so a paste-only install gets the
+rule. Floor 4 of `knowledge/arbitration.md` now points at the file that holds the
+taxonomy it names.
+
+**New: `gatecheck/`, the acceptance probes as a suite**
+The twelve probes in `docs/grounding-gate.md`, plus three written for this
+suite, now run and return an exit code. Nothing calls an API: the agent runs
+where it is
+actually used and its answers are pasted into `gatecheck/runlog/`, so the suite
+is runnable by anyone holding the repository, with no key and no package to
+install. Two layers decide each probe. Deterministic patterns catch what has a
+shape: a figure nobody sent, a reference with an author and a year, a
+conformance ruling, a grade on an artifact nobody supplied, a statute cited from
+the version that was current last year. The reviewer decides
+the rest and writes their ruling into the file; an unruled probe exits 2 and
+counts as unfinished, never as a pass, which is `docs/ownership.md` as a
+mechanism rather than a request. A pattern overrides a ruling in one direction
+only: an answer the reviewer passed still fails if a pattern catches a
+fabricated specific in it.
+
+`gatecheck/selftest.py` checks the checks against 186 written-out samples, both
+directions for each of the 26 patterns, and needs no input.
+`gatecheck/test_run_probes.py` checks the orchestrator the same way, by breaking
+a throwaway copy of the repository twenty-nine ways and asserting the exit code.
+`gatecheck/check_prose.py` reads what the other checks do not: a sentence
+repeated inside one file, and a line that breaks its file's own wrap, which is
+what an anchored edit leaves behind when it matches and mangles. The second
+direction is the one that earns its keep: a pattern firing on the negated phrase
+"that alone does not mean it meets AA" would fail precisely the answers probe 5
+exists to reward, and nothing but a sound answer the pattern must leave alone
+catches that.
+
+**New: probes 13, 14 and 15**
+Thirteen and fourteen are a pair, because a catalogue that only ever finds
+patterns is as useless as one that never does. Thirteen sends one element and asks about the rest of the flow;
+fourteen calls a confirmation dialog on account deletion a dark pattern and has
+to be told why it is not. Fifteen covers the pushback rule, which the repository
+has stated since v1.0 with nothing checking it: it sends a position, pushes back
+with preference alone, and fails both the reversal and the politer form where the
+recommendation survives while the reasoning is conceded.
+
+`gatecheck/runlog/` carries a first run of fourteen of the fifteen, produced on
+this system prompt, with every ruling pending. The pattern layer was clean on all
+fourteen. The run was produced by the model that wrote the patterns, which the
+header of each of those fourteen says, so it shows the prompt can produce
+compliant answers rather than that an unprimed operator would get them.
+
+---
+
+## v2.2.0
 
 **Release date:** 2026
 

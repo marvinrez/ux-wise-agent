@@ -1,5 +1,13 @@
 # Contribution Guide
 
+Two mechanical requirements before anything else, both enforced rather than
+asked for. `python gatecheck/selftest.py` has to pass, and it fails on a check
+that has no sample in each direction, so a new deterministic check needs a
+function in `gatecheck/checks.py`, an entry in its `CATALOGUE`, one sample it
+must catch and one sound answer it must leave alone. `python
+gatecheck/check_packaging.py` has to pass, which means the version in
+`.claude-plugin/plugin.json` is the version in `SKILL.md`. Both run in CI.
+
 ---
 
 ## Who This Is For

@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Environments
+.venv/
+venv/
+env/
+
+# macOS and editors
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*~
+
+# Tool caches
+.ruff_cache/
+.pytest_cache/
+
+# Written by every gatecheck run
+gatecheck/report.json
+
+# A probe fixture is a screenshot of a real product screen. The directory is
+# tracked, its contents are not.
+gatecheck/fixtures/*
+!gatecheck/fixtures/.gitkeep

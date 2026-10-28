@@ -1,14 +1,16 @@
-# UX Principles — Knowledge Base
+# UX Principles: Knowledge Base
 
-This document provides the core UX knowledge the agent draws from. It is not a tutorial — it is a reference that records how each principle is applied in practice and where practitioners typically misapply it.
+This document provides the core UX knowledge the agent draws from. It is not a tutorial. It is a reference that records how each principle is applied in practice and where practitioners typically misapply it.
+
+**Source of the ten heuristics below:** they are Jakob Nielsen's, from *Enhancing the explanatory power of usability heuristics* (CHI 1994), maintained since by the Nielsen Norman Group. Each **Principle** line here is this file's own statement of the heuristic, not a quotation. `knowledge/heuristics.md` carries the longer applied reference; this file carries the commentary.
 
 ---
 
-## Nielsen's 10 Usability Heuristics — Applied Commentary
+## Nielsen's 10 Usability Heuristics: Applied Commentary
 
 ### 1. Visibility of System Status
 
-**Principle:** Keep users informed about what is happening through appropriate feedback within a reasonable time.
+**Principle:** The user can tell what the system is doing, from the system, without having to guess or wait in silence.
 
 **Where it is misapplied:** Loading spinners that appear without context. Progress indicators with no connection to real progress (the bar that jumps to 90% and stalls). Status messages that describe the system's internal state rather than the user's task state ("Processing request" vs. "Saving your changes — done in a moment").
 
@@ -18,7 +20,7 @@ This document provides the core UX knowledge the agent draws from. It is not a t
 
 ### 2. Match Between System and the Real World
 
-**Principle:** Use words, phrases, and concepts familiar to the user rather than system-oriented terms.
+**Principle:** The vocabulary on screen is the one the user already has, not the one the database or the team uses.
 
 **Where it is misapplied:** Error messages written by developers for developers. Feature names derived from the product's internal architecture rather than the user's mental model. Navigation labels that describe the technology stack ("API Manager") rather than the user's task ("Connect your tools").
 
@@ -28,7 +30,7 @@ This document provides the core UX knowledge the agent draws from. It is not a t
 
 ### 3. User Control and Freedom
 
-**Principle:** Users need clearly marked "emergency exits" when they make mistakes, without going through extended processes.
+**Principle:** Getting out of a wrong turn costs one visible action, not a sequence the user has to complete first.
 
 **Where it is misapplied:** Multi-step flows with no back button. Confirmation dialogs that confirm destructive actions but do not offer an undo. Settings changes that take effect immediately without an obvious reset path. The absence of this heuristic is often intentional — it is where dark patterns begin.
 
@@ -38,7 +40,7 @@ This document provides the core UX knowledge the agent draws from. It is not a t
 
 ### 4. Consistency and Standards
 
-**Principle:** Users should not have to wonder whether different words, situations, or actions mean the same thing.
+**Principle:** The same thing is named and behaves the same way in every place it appears.
 
 **Where it is misapplied:** Design systems that are maintained in Figma but diverge in code. Terminology that changes across product areas because different teams owned them at different times. Icon usage that is internally inconsistent — the same icon meaning two different things in two different contexts.
 
@@ -48,7 +50,7 @@ This document provides the core UX knowledge the agent draws from. It is not a t
 
 ### 5. Error Prevention
 
-**Principle:** Prevent problems from occurring rather than providing good error messages.
+**Principle:** The best error message is the one that was never needed, because the condition that caused it was designed out.
 
 **Where it is misapplied:** Allowing invalid input to be submitted before validation fires. Date pickers that allow impossible date ranges. Bulk action confirmations that describe the action in abstract terms rather than showing the user what will actually be affected. "Are you sure?" dialogs that do not show what "are you sure" refers to.
 
@@ -58,7 +60,7 @@ This document provides the core UX knowledge the agent draws from. It is not a t
 
 ### 6. Recognition Over Recall
 
-**Principle:** Minimize the user's memory load by making objects, actions, and options visible.
+**Principle:** Nothing the user needs is held only in their head between one step and the next.
 
 **Where it is misapplied:** Command interfaces with no discoverability for new users. Keyboard shortcut-only features with no menu equivalents. Contextual actions that appear only on hover, making them invisible on touch devices. Search bars with no suggested queries or recent history for returning users.
 
@@ -68,7 +70,7 @@ This document provides the core UX knowledge the agent draws from. It is not a t
 
 ### 7. Flexibility and Efficiency of Use
 
-**Principle:** Allow users to tailor frequent actions and provide shortcuts for expert users.
+**Principle:** The frequent path can be made faster by the person who walks it daily, without that speed getting in the beginner's way.
 
 **Where it is misapplied:** Products that force all users through the same flow regardless of their expertise or frequency of use. Onboarding flows that cannot be skipped by returning users. No keyboard navigation in a product used primarily by power users.
 
@@ -78,7 +80,7 @@ This document provides the core UX knowledge the agent draws from. It is not a t
 
 ### 8. Aesthetic and Minimalist Design
 
-**Principle:** Dialogues should not contain irrelevant or rarely needed information. Every extra unit of information competes with and reduces the relative visibility of relevant information.
+**Principle:** Everything on screen competes with everything else for attention, so an element that is not needed now is taking visibility from one that is.
 
 **Where it is misapplied:** Dashboard widgets that display every available metric regardless of user role. Modals with three paragraphs of legal text before the action button. Navigation menus with 15 items because stakeholders requested parity with the sitemap.
 
@@ -88,7 +90,7 @@ This document provides the core UX knowledge the agent draws from. It is not a t
 
 ### 9. Help Users Recognize, Diagnose, and Recover from Errors
 
-**Principle:** Error messages should express the problem in plain language, precisely indicate the problem, and constructively suggest a solution.
+**Principle:** An error names what happened, where, and what to do about it, in words the user already understands.
 
 **Where it is misapplied:** Error code displays ("Error 403") with no plain language translation. "Something went wrong" messages with no recovery path. Form validation that marks the field red but does not specify what was wrong with the input. Backend error messages surfaced directly to users without translation.
 
@@ -98,7 +100,7 @@ This document provides the core UX knowledge the agent draws from. It is not a t
 
 ### 10. Help and Documentation
 
-**Principle:** Even though it is better if the system can be used without documentation, it may be necessary to provide help. Such information should be easy to search, focused on the user's task, list concrete steps to be carried out, and not be too large.
+**Principle:** Help is reachable from where the task is, searchable, scoped to what the user is doing, and short enough to be read in the middle of the work.
 
 **Where it is misapplied:** Feature-organized help centers that require users to know the product's taxonomy before they can search it. Help articles written in feature-release language ("New in v2.4: the enhanced dashboard") rather than task language ("How to view your team's performance data"). Contextual help that links to a help center home page rather than the relevant article.
 

@@ -1,0 +1,23 @@
+{
+  "name": "ux-wise-agent",
+  "displayName": "UX Wise Agent",
+  "version": "2.3.0",
+  "description": "A senior-level UX reasoning partner that will not invent what it was not given. Critique, arbitration, severity, states and deceptive patterns, each bound to a supplied artifact.",
+  "author": {
+    "name": "Marcos Rezende"
+  },
+  "homepage": "https://github.com/marvinrez/ux-wise-agent",
+  "repository": "https://github.com/marvinrez/ux-wise-agent",
+  "license": "MIT",
+  "keywords": [
+    "ux",
+    "product-design",
+    "design-critique",
+    "accessibility",
+    "deceptive-patterns",
+    "user-research"
+  ],
+  "skills": [
+    "./"
+  ]
+}

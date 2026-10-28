@@ -12,7 +12,7 @@ This document exists because the install instructions are frictionless and the f
 
 One person. Named in the project, the Slack channel topic, the Confluence page, or wherever the team actually looks. Their accountability is specific and small:
 
-1. They ran the acceptance probes in `docs/grounding-gate.md` in the environment where the skill is installed, and the probes behaved as specified.
+1. They ran the acceptance probes, all fifteen of them, in the environment where the skill is installed, and the probes behaved as specified.
 2. They re-run those probes after any edit to `prompts/system-prompt.md` or after a model change in the deployment.
 3. Any output from this skill that leaves the team — into a deck, a spec, a research plan, a stakeholder email, a ticket — passed under their eye first, or carries an explicit mark that it did not.
 4. When the agent is wrong in a way that reached someone, they say so and correct it. Not the tool. Them.
@@ -46,7 +46,7 @@ They did not build the model and they cannot fix its failure modes. The commitme
 Not a two-minute install. A two-minute install plus a decision.
 
 - [ ] Skill installed by one of the methods in `integrations/claude-skill.md`
-- [ ] Acceptance probes from `docs/grounding-gate.md` run in that environment, all twelve behaving as specified
+- [ ] Acceptance probes run in that environment, all fifteen behaving as specified. `python gatecheck/run_probes.py --scaffold` writes one file per probe to paste into, and `python gatecheck/run_probes.py` applies the deterministic checks and reports what is still waiting on your ruling
 - [ ] Human owner named, in writing, somewhere the team reads
 - [ ] Team told what the skill does not do — see the "Do Not Use This Skill For" list in `docs/boundaries.md`
 - [ ] Review expectation agreed for the output classes in the table above
