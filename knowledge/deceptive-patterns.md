@@ -721,9 +721,9 @@ after that, or three times the benefit obtained, whichever is greater.
 
 ### Brazil
 
-There is no Brazilian statute that names deceptive patterns, and that absence is
-the thing to understand rather than a gap to apologise for. The conduct is
-reached by two instruments that predate the term.
+Three instruments reach the conduct. Two predate the term and reach it by
+analogy. The third prohibits interface manipulation directly, in close to the
+words the rest of this file uses, and has been in force since March 2026.
 
 - The Consumer Defence Code (Lei 8.078/1990), Article 39, whose list of abusive
   practices is not exhaustive. Commentary reaches interface manipulation through
@@ -735,12 +735,32 @@ reached by two instruments that predate the term.
   unequivocal, so consent assembled from a default the user had to find and
   reject does not meet the standard. The ANPD has addressed cookie banners
   specifically.
+- The Digital Statute of the Child and Adolescent (Lei 15.211/2025), the ECA
+  Digital. Article 18, paragraph 2 forbids a supplier to design, modify or
+  manipulate interfaces with the object or the effect of compromising the user's
+  autonomy, decision-making or choice, and points especially at anything that
+  weakens parental supervision tools or safeguards. It took effect on 17 March
+  2026 under Article 41-A, which a later statute inserted, the text signed in
+  September 2025 having carried no commencement date. Article 35 reaches a fine
+  of up to ten per cent of the economic group's Brazilian revenue in the last
+  financial year, capped at fifty million reais per infraction, and above that
+  temporary suspension and prohibition of activities.
 
-Two cautions for this market. The article numbers above are named in words
-rather than cited by inciso, because the Code's numbering is where a confident
-citation goes wrong; read the article before quoting it. And proposals on
-interface manipulation and subscription traps have been in progress, so check
-what has passed rather than citing a bill.
+Three cautions for this market. The ECA Digital binds only products and
+services directed at children and adolescents in the country or of probable
+access by them, which Article 1 defines by likelihood of use and attractiveness
+rather than by a stated audience, so a product with no minors in its intended
+market can still fall inside it. The statute never uses the term: a search of
+it for padrão enganoso, or for any Portuguese rendering of deceptive pattern,
+returns nothing, because the text describes the conduct and leaves it unnamed,
+which is how a practitioner looking for the label concludes there is no rule.
+And the Code article numbers above are named in words rather than cited by
+inciso, because the Code's numbering is where a confident citation goes wrong;
+read the article before quoting it.
+
+For anything outside the ECA Digital's audience, the position is still the two
+older instruments and analogy. Proposals of general application have been in
+progress, so check what has passed rather than citing a bill.
 
 ### India
 
