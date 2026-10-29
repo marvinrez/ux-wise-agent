@@ -17,7 +17,7 @@ compatibility: Claude Projects (claude.ai), Claude Code, Claude API, any LLM acc
 version: "2.3.0"
 ---
 
-# UX Wise AI — Agent
+# UX Wise AI Agent
 
 A peer-level UX reasoning partner for senior designers, product managers, and researchers.
 Not a feature suggester. A thinking counterpart that interrogates problems before offering direction.
@@ -33,10 +33,10 @@ Not a feature suggester. A thinking counterpart that interrogates problems befor
 | `prompts/direct-mode.md` | Reference when extending Direct Mode behavior |
 | `prompts/provocative-mode.md` | Reference when extending Provocative Mode behavior |
 | `prompts/research-mode.md` | Reference when extending Research Mode behavior |
-| `docs/boundaries.md` | When to use this skill and when not to — the critique / invention line |
+| `docs/boundaries.md` | When to use this skill and when not to: the critique / invention line |
 | `docs/grounding-gate.md` | PASS/FAIL check against fabricated UX, plus acceptance probes to run before you trust an install |
 | `docs/ownership.md` | Who is accountable for the output, and what needs review before it travels |
-| `docs/vocabulary-constraints.md` | Authoritative prohibited word list — do not duplicate in system prompt |
+| `docs/vocabulary-constraints.md` | Authoritative prohibited word list: do not duplicate in system prompt |
 | `docs/intake-protocol.md` | Context-gathering protocol for session start |
 | `examples/worked-examples.md` | All four modes, plus pushback, scope redirect, two Grounding Gate cases, and one arbitration |
 | `knowledge/arbitration.md` | When two defensible directions conflict: floors, a design that keeps both, tie-break order, verdict |
@@ -74,9 +74,9 @@ This skill reasons about design decisions. It cannot see interfaces, does not ho
 
 Do not use it to:
 
-- **Invent an interface** — wireframes, screen specs, component structures, mockups, production copy. Not modesty, correctness: an invented interface carries invented specifics, and in fluent prose those are indistinguishable from real ones.
+- **Invent an interface**: wireframes, screen specs, component structures, mockups, production copy. Not modesty, correctness: an invented interface carries invented specifics, and in fluent prose those are indistinguishable from real ones.
 - **Critique a design it cannot see.** "Review this design" with nothing attached is the highest-risk request on this skill's surface. It declines rather than reconstructing.
-- **Supply facts about your product** — conversion rates, drop-off numbers, ticket volumes, user quotes, test results.
+- **Supply facts about your product**: conversion rates, drop-off numbers, ticket volumes, user quotes, test results.
 - **Produce citations as evidence.** A specific study with a specific author and a specific percentage is the exact shape fabrication takes in this domain.
 - **Declare accessibility conformance.** It reasons about which criteria apply. Conformance is established by testing the built artifact, with assistive technology, by a person.
 - **Stand in for users.** A synthetic usability finding is a hypothesis with the grammar of a result.
@@ -88,11 +88,11 @@ Full reference with the borderline cases: `docs/boundaries.md`.
 
 ## Grounding Gate
 
-Before delivering any response, the agent tests every specific in its draft — any statement a reader could act on that is not a general principle. Each must trace to one of four origins: **supplied** by the practitioner, **named** as a public framework or standard, **assumed** and marked as such, or **conditional** ("if X, then Y"). A specific with no origin is fabricated, and one fabricated specific fails the whole response.
+Before delivering any response, the agent tests every specific in its draft, meaning any statement a reader could act on that is not a general principle. Each must trace to one of four origins: **supplied** by the practitioner, **named** as a public framework or standard, **assumed** and marked as such, or **conditional** ("if X, then Y"). A specific with no origin is fabricated, and one fabricated specific fails the whole response.
 
 Four checks, each producing PASS or FAIL: **Artifact** (naming screens or elements nobody supplied), **Evidence** (numbers, studies, benchmarks), **Behavior** (what *your* users did versus what users *tend* to do), **Standard** (criterion numbers and thresholds cited approximately).
 
-On FAIL the response is repaired and re-run — ask for what is missing, restate at the resolution supplied, or convert the invented specific into a stated assumption. On FAIL at the Artifact check with nothing supplied, the response stops rather than reshaping.
+On FAIL the response is repaired and re-run: ask for what is missing, restate at the resolution supplied, or convert the invented specific into a stated assumption. On FAIL at the Artifact check with nothing supplied, the response stops rather than reshaping.
 
 Responses that pass on assumptions or conditionals carry them visibly:
 
@@ -118,7 +118,7 @@ Five references turn trade-offs, states, psychology, severity, and deceptive pat
 
 ## Quick Start
 
-**Before you install:** this skill produces senior-sounding analysis at volume, and some of it will be wrong in ways that are hard to spot. Name a human owner before its output informs anything beyond your own desk — one person who ran the acceptance probes, re-runs them after changes, reviews output on its way out of the team, and corrects the record when the agent is wrong. Two-minute install, plus one decision. See `docs/ownership.md`.
+**Before you install:** this skill produces senior-sounding analysis at volume, and some of it will be wrong in ways that are hard to spot. Name a human owner before its output informs anything beyond your own desk, one person who ran the acceptance probes, re-runs them after changes, reviews output on its way out of the team, and corrects the record when the agent is wrong. Two-minute install, plus one decision. See `docs/ownership.md`.
 
 **Claude Projects (claude.ai)**
 1. Open a Project
@@ -200,7 +200,7 @@ marketplace: `/plugin install ux-wise-agent --marketplace marvinrez/ux-wise-agen
 - Added `docs/grounding-gate.md`: a PASS/FAIL check against fabricated UX, with eight acceptance probes for auditing an installation
 - Added `docs/ownership.md`: the named human owner requirement, and which outputs need review before they travel
 - System prompt now carries the boundary and the gate, including a visible `Unverified:` line for assumptions and conditionals
-- Skill description no longer says "always activate" — it names what the skill must not be activated for
+- Skill description no longer says "always activate". It names what the skill must not be activated for
 
 ---
 

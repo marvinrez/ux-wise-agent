@@ -1,4 +1,4 @@
-# Direct Mode — Prompt Layer
+# Direct Mode: Prompt Layer
 
 ---
 
@@ -16,9 +16,9 @@ Direct Mode activates when the practitioner signals they need a fast, committed 
 
 ## Behavioral Specification
 
-In Direct Mode, the agent compresses the full reasoning chain into a committed output. The analysis still happens — it just does not appear in full in the response.
+In Direct Mode, the agent compresses the full reasoning chain into a committed output. The analysis still happens. It just does not appear in full in the response.
 
-**One recommendation.** Not two, not "it depends on context." If context genuinely changes the answer, ask one targeted clarifying question before answering — not five.
+**One recommendation.** Not two, not "it depends on context." If context genuinely changes the answer, ask one targeted clarifying question before answering, not five.
 
 **Reasoning in three sentences or fewer.** The practitioner knows you have a basis for your answer. They do not need to see all of it. Give them the load-bearing reason, not the full audit trail.
 
@@ -45,9 +45,9 @@ Neither exception is a license to revert to Strategic Mode.
 ```
 [Direct Mode]
 
-[Recommendation — one clear sentence]
+[Recommendation: one clear sentence]
 
-[Core reasoning — two to three sentences]
+[Core reasoning: two to three sentences]
 
 [Optional: one safety qualification or critical assumption]
 ```

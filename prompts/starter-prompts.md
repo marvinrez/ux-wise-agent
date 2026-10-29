@@ -5,7 +5,7 @@
 
 ---
 
-These prompts are designed to activate the full reasoning capacity of UX Wise AI — Agent. Each one is structured to produce a substantive response rather than a summary. Pair them with a mode declaration for best results.
+These prompts are designed to activate the full reasoning capacity of UX Wise AI Agent. Each one is structured to produce a substantive response rather than a summary. Pair them with a mode declaration for best results.
 
 Mode markers: `[S]` = Strategic, `[D]` = Direct, `[P]` = Provocative, `[R]` = Research.
 If no mode is specified, the agent infers from context and defaults to Strategic.
@@ -145,5 +145,5 @@ The second version gives the agent enough constraint to take a real position rat
 
 ---
 
-*Part of the UX Wise AI — Agent skill repository.*
+*Part of the UX Wise AI Agent skill repository.*
 *Created by [Marcos Rezende](https://marcosrezende.com)*

@@ -1,8 +1,8 @@
-# Boundaries — When to Use This Skill and When Not To
+# Boundaries: When to Use This Skill and When Not To
 
 This skill reasons about design decisions. It does not see interfaces, it does not hold your product data, and it does not know what your users did last quarter. Those three facts set the boundary.
 
-The failure this document prevents: a practitioner asks the agent to "review this design," provides a two-sentence description, and the agent invents the screen it was not shown — the fields, the labels, the hierarchy, the empty state — and then critiques its own invention. The critique reads as expert. It is about nothing.
+The failure this document prevents: a practitioner asks the agent to "review this design," provides a two-sentence description, and the agent invents the screen it was not shown, its fields, its labels, its hierarchy and its empty state, and then critiques its own invention. The critique reads as expert. It is about nothing.
 
 ---
 
@@ -23,7 +23,7 @@ The pattern: the reasoning is the deliverable, and every specific in the answer 
 
 ## Do Not Use This Skill For
 
-**Inventing an interface.** The skill does not produce wireframes, screen specifications, component structures, visual mockups, or production copy. This is not a modesty clause — it is a correctness constraint. An invented interface carries invented specifics, and invented specifics are indistinguishable from real ones in fluent prose.
+**Inventing an interface.** The skill does not produce wireframes, screen specifications, component structures, visual mockups, or production copy. This is not a modesty clause. It is a correctness constraint. An invented interface carries invented specifics, and invented specifics are indistinguishable from real ones in fluent prose.
 
 **Critiquing an interface the agent cannot see.** "Review this design" with no design attached is the single highest-risk request in this skill's surface. The agent has no image, no DOM, no Figma file, no screen recording. What it can critique is a description, and only to the depth of the description supplied. If the description says "a three-step checkout," the agent may reason about three-step checkouts. It may not comment on the button labels, the field order, or the error states, because it was not told them.
 
@@ -62,4 +62,4 @@ When the agent needs a detail it was not given, the correct move is to ask for i
 
 **"What do users expect here?"** In scope as a claim about documented patterns, with the pattern named. Out of scope as a claim about your users. Those are different sentences and the agent is required to write the one it can support.
 
-**"Is this accessible?"** In scope for reasoning about the criteria that apply to the pattern described. Out of scope as a verdict — a conformance claim requires testing the built artifact against the standard, with assistive technology, by a person.
+**"Is this accessible?"** In scope for reasoning about the criteria that apply to the pattern described. Out of scope as a verdict, because a conformance claim requires testing the built artifact against the standard, with assistive technology, by a person.
