@@ -12,7 +12,7 @@ gatecheck/check_packaging.py` has to pass, which means the version in
 
 ## Who This Is For
 
-This guide is for practitioners who want to extend, refine, or fork the UX Wise AI — Agent skill. Contributions are welcome if they meet the reasoning and quality standards the skill is built on.
+This guide is for practitioners who want to extend, refine, or fork the UX Wise AI Agent skill. Contributions are welcome if they meet the reasoning and quality standards the skill is built on.
 
 ---
 
@@ -24,7 +24,7 @@ The system prompt (`prompts/system-prompt.md`) and individual mode files (`promp
 
 Any change to the system prompt must be tested against every worked example in `examples/worked-examples.md` and every acceptance probe in `docs/grounding-gate.md`. If the change causes the agent to produce lower-quality responses to those prompts, the change needs revision.
 
-**Adding a new mode:** New modes must be structurally distinct from the existing four — not a variation of tone, but a different reasoning posture applied to a different type of practitioner need. The mode must have:
+**Adding a new mode:** New modes must be structurally distinct from the existing four, not a variation of tone, but a different reasoning posture applied to a different type of practitioner need. The mode must have:
 - A clear trigger condition
 - A behavioral specification (what the agent does differently in this mode)
 - A defined output structure
@@ -36,10 +36,10 @@ Any change to the system prompt must be tested against every worked example in `
 New knowledge documents can be added to the `knowledge/` directory. Knowledge files must meet the following standard:
 
 - They document how a principle or framework is **applied**, not just what it is
-- They identify common misapplications — where practitioners get it wrong
+- They identify common misapplications: where practitioners get it wrong
 - They do not reproduce copyrighted material verbatim
 - They reference primary sources by author and concept, not by URL (URLs decay)
-- They are written at senior practitioner level — no definitions of basic terms
+- They are written at senior practitioner level, with no definitions of basic terms
 - Every rule is written as a condition or a question the agent can ask, never as a claim about a product the agent has not seen
 - Every principle states its scope: when it applies, when it does not, and, where relevant, where it becomes manipulation
 - Contested or poorly replicated effects are labelled as such, not presented as settled
@@ -78,15 +78,15 @@ Do not add words to the prohibited list that are precise and useful in the right
 
 ## Quality Standards for All Contributions
 
-**No prohibited vocabulary.** Run any new text against `docs/vocabulary-constraints.md` before submitting. The vocabulary constraints apply to documentation, examples, and knowledge files — not only to the system prompt.
+**No prohibited vocabulary.** Run any new text against `docs/vocabulary-constraints.md` before submitting. The vocabulary constraints apply to documentation, examples, and knowledge files, not only to the system prompt.
 
-**No hedged positions.** If a knowledge document or worked example takes a position, take it clearly. "Some practitioners prefer X while others prefer Y" is not analysis — it is the absence of analysis. Take the position and explain it.
+**No hedged positions.** If a knowledge document or worked example takes a position, take it clearly. "Some practitioners prefer X while others prefer Y" is not analysis. It is the absence of analysis. Take the position and explain it.
 
 **No generic examples.** Examples must reference specific product contexts, specific user populations, or specific design decisions. Generic examples ("imagine a user who wants to accomplish something") do not demonstrate the reasoning quality this skill is designed to produce.
 
 **Grounded claims.** Every substantive claim in a knowledge document must be traceable to a named researcher, a documented study, or a well-established professional standard. "Studies show" without attribution does not meet the standard.
 
-**No tutorial content.** This skill is built for senior practitioners. Do not add content that defines basic UX terms or explains foundational concepts. If a concept is in any introductory UX textbook, it does not need to be defined here — it needs to be applied.
+**No tutorial content.** This skill is built for senior practitioners. Do not add content that defines basic UX terms or explains foundational concepts. If a concept is in any introductory UX textbook, it does not need to be defined here. It needs to be applied.
 
 ---
 

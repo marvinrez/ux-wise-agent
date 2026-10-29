@@ -16,7 +16,7 @@ When auditing a product or evaluating a design decision, use the "diagnostic que
 
 The interface says what state the system is in, soon enough for the user to act on it, and in terms of what the user just did.
 
-**What this means at practice level:** Every user action creates an expectation. The interface must fulfill that expectation — not with generic feedback, but with feedback that is specific to what the user just did and what is happening as a result.
+**What this means at practice level:** Every user action creates an expectation. The interface must fulfill that expectation, not with generic feedback, but with feedback that is specific to what the user just did and what is happening as a result.
 
 **Common failure modes in real products:**
 - Loading indicators that appear and disappear without communicating what loaded or whether it was successful
@@ -27,7 +27,7 @@ The interface says what state the system is in, soon enough for the user to act 
 
 **What good looks like:** Stripe's payment confirmation flow. At every step, the user has unambiguous confirmation of what happened: the card was validated, the charge is processing, the payment succeeded. No step requires the user to infer what is happening from the absence of feedback.
 
-**Diagnostic question:** After the user takes an action, can they confirm — without guessing — that the system received it and is acting on it?
+**Diagnostic question:** After the user takes an action, can they confirm, without guessing, that the system received it and is acting on it?
 
 ---
 
@@ -43,7 +43,7 @@ The words, images and ordering belong to the user's world rather than to the sys
 - Feature names derived from the engineering implementation rather than the user's goal ("Entity Relationship Manager" instead of "Data connections")
 - Technical terminology that is accurate but opaque to the target user population
 
-**Where this gets complicated:** Enterprise products serving technical users (developers, data engineers, security analysts) require a calibrated definition of "real world." The match must be to this specific user's real world — which may include highly technical vocabulary — not to a simplified consumer equivalent. The heuristic fails in both directions: too technical for non-technical users, and condescendingly simplified for expert users.
+**Where this gets complicated:** Enterprise products serving technical users (developers, data engineers, security analysts) require a calibrated definition of "real world." The match must be to this specific user's real world, which may include highly technical vocabulary, not to a simplified consumer equivalent. The heuristic fails in both directions: too technical for non-technical users, and condescendingly simplified for expert users.
 
 **Diagnostic question:** If a user read this label, message, or navigation item with no prior product exposure, would it tell them anything useful about what they should do or where they are?
 
@@ -53,7 +53,7 @@ The words, images and ordering belong to the user's world rather than to the sys
 
 A user who arrives somewhere they did not intend can leave without completing anything, and can take back what they just did. The way out is visible before it is needed.
 
-**What this means at practice level:** Users make mistakes. They explore. They change their minds. The interface must allow recovery at every point where a user can take an action with consequences — and "recovery" means returning to a known safe state without data loss, without re-entering previously provided information, and without needing to understand why the error occurred.
+**What this means at practice level:** Users make mistakes. They explore. They change their minds. The interface must allow recovery at every point where a user can take an action with consequences, and "recovery" means returning to a known safe state without data loss, without re-entering previously provided information, and without needing to understand why the error occurred.
 
 **Common failure modes in real products:**
 - Multi-step flows where the back button navigates away from the flow entirely instead of going to the previous step
@@ -61,7 +61,7 @@ A user who arrives somewhere they did not intend can leave without completing an
 - Confirmation dialogs that describe the action abstractly ("Are you sure?") instead of specifically ("Delete this report? This will also remove it from all shared dashboards.")
 - Session timeout behavior that discards unsaved form data without warning
 
-**Where dark patterns begin:** This heuristic is violated intentionally more often than any other. Subscription cancellation flows, in-app purchase confirmation sequences, and data deletion warnings are consistently designed to add friction to reversing a business-favorable decision. Designers who work on these flows should be aware that they are making a choice — not following a template.
+**Where dark patterns begin:** This heuristic is violated intentionally more often than any other. Subscription cancellation flows, in-app purchase confirmation sequences, and data deletion warnings are consistently designed to add friction to reversing a business-favorable decision. Designers who work on these flows should be aware that they are making a choice, not following a template.
 
 **Diagnostic question:** At any point in this flow where the user can take a consequential action, can they reverse it without contacting support?
 
@@ -76,7 +76,7 @@ One thing carries one name and one behaviour everywhere in the product, and matc
 **Common failure modes in real products:**
 - Products built by multiple teams over time, where different sections use different terminology for the same concept because the teams named things independently
 - Icon usage where the same icon appears in different contexts with different meanings
-- Button behavior that varies — primary actions that behave as destructive in some contexts and constructive in others
+- Button behavior that varies, with primary actions that behave as destructive in some contexts and constructive in others
 - Design systems that are defined in Figma but diverge in production because the code implementation was not maintained to the same standard
 
 **The design system failure mode:** Many products have design systems that enforce visual consistency but not interaction or terminology consistency. A design system is not complete if it covers components but not content patterns. The terminology problem compounds over time and becomes a significant UX debt because it is invisible to the team but experienced by users in every session.
@@ -89,7 +89,7 @@ One thing carries one name and one behaviour everywhere in the product, and matc
 
 Removing the conditions that make a mistake possible beats explaining the mistake afterwards. Where the condition cannot be removed, the commitment is confirmed before it becomes irreversible.
 
-**What this means at practice level:** Error prevention means designing the interface so that the class of errors you want to prevent is structurally difficult to make. This is not the same as adding warnings — warnings are error notification, not error prevention. Real error prevention constrains the action space so that invalid states are not reachable.
+**What this means at practice level:** Error prevention means designing the interface so that the class of errors you want to prevent is structurally difficult to make. This is not the same as adding warnings. Warnings are error notification, not error prevention. Real error prevention constrains the action space so that invalid states are not reachable.
 
 **Common failure modes in real products:**
 - Date range pickers that allow the end date to be set before the start date, then display an error after submission
@@ -112,10 +112,10 @@ What the user needs is on screen when they need it, so nothing has to be carried
 **Common failure modes in real products:**
 - Wizard-style multi-step flows where choices made in step one are not visible in step three
 - Search bars with no query history or suggested searches for returning users
-- Contextual actions that are only visible on hover — making them discoverable on mouse interfaces but completely hidden on touch devices
+- Contextual actions that are only visible on hover, making them discoverable on mouse interfaces but completely hidden on touch devices
 - Settings panels where the current value is not shown, requiring users to remember what they previously set before they can decide whether to change it
 
-**The expert user exception:** For highly expert users who have internalized the system's structure, recall-heavy interfaces can actually be preferable — keyboard shortcuts, command palettes, and CLI interfaces make sense when users have invested in learning them. The failure mode is building recall-heavy interfaces for user populations that have not made that investment and do not want to.
+**The expert user exception:** For highly expert users who have internalized the system's structure, recall-heavy interfaces can actually be preferable. Keyboard shortcuts, command palettes, and CLI interfaces make sense when users have invested in learning them. The failure mode is building recall-heavy interfaces for user populations that have not made that investment and do not want to.
 
 **Diagnostic question:** At any point in this flow, does the user need to remember something from a previous step, session, or external context in order to proceed correctly? If yes, can the interface surface that information instead?
 
@@ -125,7 +125,7 @@ What the user needs is on screen when they need it, so nothing has to be carried
 
 The product is learnable by someone who has never opened it and fast for someone who opens it daily, with the shortcuts available to the second and out of the way of the first.
 
-**What this means at practice level:** The interface should have multiple layers of interaction speed — a discoverable path that guides novice or infrequent users, and a faster path available to users who have built proficiency. The novice path should not slow down the expert. The expert path should not be required of the novice.
+**What this means at practice level:** The interface should have multiple layers of interaction speed: a discoverable path that guides novice or infrequent users, and a faster path available to users who have built proficiency. The novice path should not slow down the expert. The expert path should not be required of the novice.
 
 **Common failure modes in real products:**
 - Onboarding flows that cannot be dismissed or fast-forwarded by returning users
@@ -133,7 +133,7 @@ The product is learnable by someone who has never opened it and fast for someone
 - No batch operations in interfaces where power users regularly need to perform the same action on many items
 - No saved views, templates, or shortcuts in products where certain configurations are used repeatedly
 
-**The enterprise product tension:** B2B products frequently serve populations with wildly different proficiency levels — a new hire using the same tool as someone with three years of daily use. Designing for only one level is a product failure. The most defensible approach is to design the novice path as the default, with mechanisms for users to progressively discover and adopt faster paths as they build proficiency.
+**The enterprise product tension:** B2B products frequently serve populations with wildly different proficiency levels, such as a new hire using the same tool as someone with three years of daily use. Designing for only one level is a product failure. The most defensible approach is to design the novice path as the default, with mechanisms for users to progressively discover and adopt faster paths as they build proficiency.
 
 **Diagnostic question:** Who are the daily users of this feature? Does the interface serve their actual task completion pattern, or does it still treat them as first-time users?
 
@@ -143,7 +143,7 @@ The product is learnable by someone who has never opened it and fast for someone
 
 Everything on screen competes with everything else for attention, so an element that is not needed now is taking visibility from one that is.
 
-**What this means at practice level:** This heuristic is about information hierarchy, not visual simplicity. The interface should foreground the information and actions the user needs for the task at hand and background everything else. This does not mean removing features — it means removing features from the visual foreground of contexts where they are irrelevant.
+**What this means at practice level:** This heuristic is about information hierarchy, not visual simplicity. The interface should foreground the information and actions the user needs for the task at hand and background everything else. This does not mean removing features. It means removing features from the visual foreground of contexts where they are irrelevant.
 
 **Common failure modes in real products:**
 - Dashboard pages that show all available metrics regardless of user role, because no one made the decision about what each role actually needs to see
@@ -151,7 +151,7 @@ Everything on screen competes with everything else for attention, so an element 
 - Settings pages that mix frequently changed settings with system configuration that is set once and never touched again
 - Modals that contain explanatory paragraphs before the action the user opened the modal to take
 
-**The stakeholder pressure problem:** Minimalist design is frequently resisted by stakeholders who equate feature visibility with feature value. "If users can't see it, they won't know it exists" is a real concern — but the response is better information architecture and progressive disclosure, not equal visual weight for everything. The designer's job in these conversations is to show that hiding rarely-used features does not reduce their availability, it reduces the noise that obscures the frequently-used ones.
+**The stakeholder pressure problem:** Minimalist design is frequently resisted by stakeholders who equate feature visibility with feature value. "If users can't see it, they won't know it exists" is a real concern, but the response is better information architecture and progressive disclosure, not equal visual weight for everything. The designer's job in these conversations is to show that hiding rarely-used features does not reduce their availability, it reduces the noise that obscures the frequently-used ones.
 
 **Diagnostic question:** If you removed this element from the screen, would a user completing their primary task notice its absence and be unable to proceed?
 
@@ -168,7 +168,7 @@ An error says in plain words what went wrong, where it went wrong, and what the 
 - HTTP error codes displayed without translation
 - Form validation that marks a field as invalid but does not specify what would make it valid
 - Error states that occur because of system conditions (server error, timeout) but are described in user-fault language ("Your request could not be processed")
-- Error messages that describe the error but provide no recovery action — telling the user what failed without telling them how to fix it
+- Error messages that describe the error but provide no recovery action, telling the user what failed without telling them how to fix it
 
 **The tone distinction:** Error messages are written in two failure modes: defensive (written to protect the company from perceived fault) and blame-transferring (written as if the user caused a problem they did not). Both degrade trust. Error messages should be factual, specific, and recovery-oriented without assigning fault where none applies.
 
@@ -180,14 +180,14 @@ An error says in plain words what went wrong, where it went wrong, and what the 
 
 Help is reachable from where the task is, searchable, scoped to what the user is doing, and short enough to be read in the middle of the work.
 
-**What this means at practice level:** When users need documentation — and for complex products, they will — the documentation must be findable, organized around the user's task rather than the product's feature set, and specific enough to be actionable.
+**What this means at practice level:** When users need documentation, and for complex products they will, the documentation must be findable, organized around the user's task rather than the product's feature set, and specific enough to be actionable.
 
 **Common failure modes in real products:**
 - Help centers organized by product feature ("Dashboard," "Reports," "Settings") rather than by user goal ("How to share results with your team," "How to connect to your data source")
 - Contextual help links that point to the help center home page rather than the relevant article
-- Search within help that does not match user language — a user searching "how to delete my account" should not receive zero results because the article is titled "Account termination"
+- Search within help that does not match user language. A user searching "how to delete my account" should not receive zero results because the article is titled "Account termination"
 - Documentation written in feature-release language ("New in 2.4: enhanced dashboard capabilities") that becomes orphaned content as the product evolves
-- Help articles with no examples, screenshots, or concrete steps — paragraphs of description that require the user to infer the actual action
+- Help articles with no examples, screenshots, or concrete steps, just paragraphs of description that require the user to infer the actual action
 
 **The design implication:** Help and documentation are a design problem, not a content problem alone. The information architecture of the help system, the search experience, the contextual entry points from within the product, and the progressive disclosure within articles are all design decisions that determine whether the help system actually helps.
 

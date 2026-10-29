@@ -1,6 +1,6 @@
 # Claude Integration Guide
 
-## Using UX Wise AI — Agent with Claude
+## Using UX Wise AI Agent with Claude
 
 ---
 
@@ -12,7 +12,7 @@
 
 ---
 
-## Method 1: Claude Projects — Skill File (Recommended for Claude Code users)
+## Method 1: Claude Projects, Skill File (Recommended for Claude Code users)
 
 If you are using Claude Code or a Claude environment that supports the Anthropic skills standard, install `SKILL.md` directly:
 
@@ -20,26 +20,26 @@ If you are using Claude Code or a Claude environment that supports the Anthropic
 2. Rename the directory to `ux-wise-agent` if it isn't already
 3. Claude will pick up `SKILL.md` automatically and trigger the skill when relevant UX reasoning tasks are requested
 
-The `SKILL.md` file contains YAML frontmatter with the skill name, description, and compatibility metadata. Do not remove or modify the frontmatter block — it controls how the skill is triggered.
+The `SKILL.md` file contains YAML frontmatter with the skill name, description, and compatibility metadata. Do not remove or modify the frontmatter block. It controls how the skill is triggered.
 
 ---
 
-## Method 2: Claude Projects — Manual Paste (Recommended for claude.ai users)
+## Method 2: Claude Projects, Manual Paste (Recommended for claude.ai users)
 
 1. Open [claude.ai](https://claude.ai) and navigate to Projects
-2. Create a new project named "UX Wise AI — Agent"
+2. Create a new project named "UX Wise AI Agent"
 3. Click "Edit project instructions"
-4. Copy the full contents of `prompts/system-prompt.md` — from the line after `## SYSTEM PROMPT — START` to the line before `## SYSTEM PROMPT — END`
+4. Copy the full contents of `prompts/system-prompt.md`, from the line after `## SYSTEM PROMPT - START` to the line before `## SYSTEM PROMPT - END`
 5. Paste into the project instructions field
 6. Save the project
 
-All conversations within this project will operate as UX Wise AI — Agent.
+All conversations within this project will operate as UX Wise AI Agent.
 
 **Advantages:** Persistent across sessions. No need to re-paste the prompt. Conversations are organized within the project context.
 
 ---
 
-## Method 3: Anthropic API — Direct System Prompt
+## Method 3: Anthropic API, Direct System Prompt
 
 ```python
 import anthropic
@@ -166,7 +166,7 @@ In v2.0, the agent also infers mode from contextual signals without explicit key
 
 ---
 
-## Deploying via API — Minimum Bar
+## Deploying via API: Minimum Bar
 
 An API deployment removes the human from the loop by construction, which moves the whole burden onto the interface you build around it. Before it reaches anyone but you:
 
