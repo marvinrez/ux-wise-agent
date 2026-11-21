@@ -288,9 +288,24 @@ This skill enforces a strict vocabulary policy. Words that signal vague, corpora
 
 ---
 
+## Get It
+
+This repository is the complete skill, free under the MIT licence. Clone it and follow the Quick Start above.
+
+If you prefer a ready-to-install pack, with a 5-page START-HERE setup guide (PDF) and updates delivered to your library, it is also available on:
+
+- [Gumroad](https://marcosrezende.gumroad.com/l/UXWISE)
+- [Agensi](https://www.agensi.io/creators/marcos-rezende), with optional live-site review tools (screenshot, Lighthouse, design-system extraction)
+
+Buying a pack is also the simplest way to support new versions. For visual review of screenshots and Figma frames, see the full product at [uxwise.ai/agent](https://uxwise.ai/agent).
+
+---
+
 ## License
 
-MIT License. Free to use, modify, and distribute. Attribution to UX Wise AI is appreciated but not required.
+MIT License, Copyright (c) 2026 Marcos Rezende. You may use, modify and distribute the skill files, including commercially, as long as the copyright notice and licence text stay in every copy. See [`LICENSE`](LICENSE).
+
+The MIT licence does not cover the names "UX Wise AI" and "UX Wise AI Agent" or the logo. Forks and derivatives must use a different name and may say "Based on UX Wise AI Agent by Marcos Rezende (MIT licence)". See [`NOTICE.md`](NOTICE.md).
 
 ---
 
